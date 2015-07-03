@@ -1,0 +1,38 @@
+#!/bin/bash
+
+echo
+echo "--- Update F-Prot ---"
+sudo /opt/f-prot/fpupdate
+
+echo
+echo "--- Update ClamAV ---"
+sudo /usr/bin/freshclam
+
+echo
+echo "--- Update BitDefender ---"
+sudo /opt/BitDefender-scanner/bin/bdscan --update
+
+echo
+echo "--- Update AVG ---"
+sudo /usr/bin/avgupdate
+
+echo
+echo "--- Update Avira ---"
+sudo /usr/sbin/avguard stop
+sudo /usr/sbin/avupdate-guard --product=Guard
+sudo /usr/sbin/avguard start
+
+echo
+echo "--- Update F-Secure Linux Security 10.10.142 ---"
+sudo /opt/f-secure/fsav/bin/dbupdate
+
+echo
+echo "--- Update Avast (avast4workstation) ---"
+sudo sysctl -w kernel.shmmax=200000000
+sudo /opt/avast/bin/avast-update
+
+echo
+echo "--- Update Eset File Security v4.0.10 ---"
+sudo /opt/eset/esets/sbin/esets_update 
+
+echo

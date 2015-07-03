@@ -1,0 +1,8 @@
+#!/bin/bash
+
+/opt/bin/updateScanner
+
+echo " "
+echo " "
+echo "starte VxCage"
+/opt/bin/startVxCage

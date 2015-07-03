@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /opt/vxcage
+./api.py -p 8888
