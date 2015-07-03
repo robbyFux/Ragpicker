@@ -1,0 +1,492 @@
+{
+    "AntiDBG": {
+        "Anti_Debug": "No", 
+        "API_Anti_Debug": [
+            "No suspicious API Anti Debug"
+        ]
+    }, 
+    "AntiVM": [
+        "None"
+    ], 
+    "AntivirusScanAvg": {
+        "Avg": "Trojan horse BackDoor.Generic17.AVHF"
+    }, 
+    "AntivirusScanBitDefender": {
+        "BitDefender": null
+    }, 
+    "AntivirusScanFProt": {
+        "FProt": "OK"
+    }, 
+    "CheckEP": {
+        "posVsSections": "0/8", 
+        "Suspicious": false, 
+        "EP": "0x409820", 
+        "Name": "CODE"
+    }, 
+    "CheckRSRC": [
+        {
+            "Lang": "LANG_DUTCH", 
+            "RVA": "0x1030c", 
+            "name": "RT_ICON", 
+            "Type": "GLS_BINARY_LSB_FIRST", 
+            "Sublang": "SUBLANG_DUTCH", 
+            "Size": "0x128"
+        }, 
+        {
+            "Lang": "LANG_DUTCH", 
+            "RVA": "0x10434", 
+            "name": "RT_ICON", 
+            "Type": "GLS_BINARY_LSB_FIRST", 
+            "Sublang": "SUBLANG_DUTCH", 
+            "Size": "0x568"
+        }, 
+        {
+            "Lang": "LANG_DUTCH", 
+            "RVA": "0x1099c", 
+            "name": "RT_ICON", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_DUTCH", 
+            "Size": "0x2e8"
+        }, 
+        {
+            "Lang": "LANG_DUTCH", 
+            "RVA": "0x10c84", 
+            "name": "RT_ICON", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_DUTCH", 
+            "Size": "0x8a8"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x1152c", 
+            "name": "RT_STRING", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0x2f2"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x11820", 
+            "name": "RT_STRING", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0x30c"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x11b2c", 
+            "name": "RT_STRING", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0x2ce"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x11dfc", 
+            "name": "RT_STRING", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0x68"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x11e64", 
+            "name": "RT_STRING", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0xb4"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x11f18", 
+            "name": "RT_STRING", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0xae"
+        }, 
+        {
+            "Lang": "LANG_ENGLISH", 
+            "RVA": "0x11fc8", 
+            "name": "RT_GROUP_ICON", 
+            "Type": "MS", 
+            "Sublang": "SUBLANG_ENGLISH_US", 
+            "Size": "0x3e"
+        }, 
+        {
+            "Lang": "LANG_ENGLISH", 
+            "RVA": "0x12008", 
+            "name": "RT_VERSION", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_ENGLISH_US", 
+            "Size": "0x3a8"
+        }, 
+        {
+            "Lang": "LANG_ENGLISH", 
+            "RVA": "0x123b0", 
+            "name": "RT_MANIFEST", 
+            "Type": "XML", 
+            "Sublang": "SUBLANG_ENGLISH_US", 
+            "Size": "0x289"
+        }
+    ], 
+    "Imports": [
+        {
+            "imports": [
+                "DeleteCriticalSection", 
+                "LeaveCriticalSection", 
+                "EnterCriticalSection", 
+                "InitializeCriticalSection", 
+                "VirtualFree", 
+                "VirtualAlloc", 
+                "LocalFree", 
+                "LocalAlloc", 
+                "WideCharToMultiByte", 
+                "TlsSetValue", 
+                "TlsGetValue", 
+                "MultiByteToWideChar", 
+                "GetModuleHandleA", 
+                "GetLastError", 
+                "GetCommandLineA", 
+                "WriteFile", 
+                "SetFilePointer", 
+                "SetEndOfFile", 
+                "RtlUnwind", 
+                "ReadFile", 
+                "RaiseException", 
+                "GetStdHandle", 
+                "GetFileSize", 
+                "GetSystemTime", 
+                "GetFileType", 
+                "ExitProcess", 
+                "CreateFileA", 
+                "CloseHandle"
+            ], 
+            "name": "kernel32.dll"
+        }, 
+        {
+            "imports": [
+                "MessageBoxA"
+            ], 
+            "name": "user32.dll"
+        }, 
+        {
+            "imports": [
+                "VariantChangeTypeEx", 
+                "VariantCopyInd", 
+                "VariantClear", 
+                "SysStringLen", 
+                "SysAllocStringLen"
+            ], 
+            "name": "oleaut32.dll"
+        }, 
+        {
+            "imports": [
+                "RegQueryValueExA", 
+                "RegOpenKeyExA", 
+                "RegCloseKey", 
+                "OpenProcessToken", 
+                "LookupPrivilegeValueA"
+            ], 
+            "name": "advapi32.dll"
+        }, 
+        {
+            "imports": [
+                "WriteFile", 
+                "VirtualQuery", 
+                "VirtualProtect", 
+                "VirtualFree", 
+                "VirtualAlloc", 
+                "Sleep", 
+                "SetLastError", 
+                "SetFilePointer", 
+                "SetErrorMode", 
+                "SetEndOfFile", 
+                "RemoveDirectoryA", 
+                "ReadFile", 
+                "LoadLibraryA", 
+                "IsDBCSLeadByte", 
+                "GetWindowsDirectoryA", 
+                "GetVersionExA", 
+                "GetUserDefaultLangID", 
+                "GetSystemInfo", 
+                "GetSystemDefaultLCID", 
+                "GetProcAddress", 
+                "GetModuleHandleA", 
+                "GetModuleFileNameA", 
+                "GetLocaleInfoA", 
+                "GetLastError", 
+                "GetFullPathNameA", 
+                "GetFileSize", 
+                "GetFileAttributesA", 
+                "GetExitCodeProcess", 
+                "GetEnvironmentVariableA", 
+                "GetCurrentProcess", 
+                "GetCommandLineA", 
+                "InterlockedExchange", 
+                "FormatMessageA", 
+                "DeleteFileA", 
+                "CreateProcessA", 
+                "CreateFileA", 
+                "CreateDirectoryA", 
+                "CloseHandle"
+            ], 
+            "name": "kernel32.dll"
+        }, 
+        {
+            "imports": [
+                "TranslateMessage", 
+                "SetWindowLongA", 
+                "PeekMessageA", 
+                "MsgWaitForMultipleObjects", 
+                "MessageBoxA", 
+                "LoadStringA", 
+                "ExitWindowsEx", 
+                "DispatchMessageA", 
+                "DestroyWindow", 
+                "CreateWindowExA", 
+                "CallWindowProcA", 
+                "CharPrevA"
+            ], 
+            "name": "user32.dll"
+        }, 
+        {
+            "imports": [
+                "InitCommonControls"
+            ], 
+            "name": "comctl32.dll"
+        }, 
+        {
+            "imports": [
+                "AdjustTokenPrivileges"
+            ], 
+            "name": "advapi32.dll"
+        }
+    ], 
+    "InetSourceAnalysis": {
+        "URLVoid": {
+            "url": "down2.feiyang163.com", 
+            "urlResult": [
+                {
+                    "IP": "211.101.12.49"
+                }, 
+                {
+                    "CountryCode": "(CN) China"
+                }, 
+                {
+                    "HTTPResponseCode": " 200"
+                }, 
+                {
+                    "WebsiteStatus": "The website is detected by 1 blacklist engine."
+                }, 
+                {
+                    "Blacklist": "Host is listed in blacklist at: http://www.scumware.org/search.scumware"
+                }
+            ]
+        }, 
+        "Robtex": {
+            "ipResult": [
+                {
+                    "ARecord": "This IP does not resolve to a domain"
+                }
+            ], 
+            "ip": "211.101.12.49"
+        }, 
+        "IPVoid": {
+            "ipResult": [
+                {
+                    "BlacklistStatus": "No Blacklist status"
+                }, 
+                {
+                    "Blacklist": "Host is not listed in a blacklist"
+                }, 
+                {
+                    "ISP": "No ISP listed"
+                }, 
+                {
+                    "GEOLocation": "No GEO location listed"
+                }
+            ], 
+            "ip": "211.101.12.49"
+        }, 
+        "Alienvault": "211.101.12.49 is listed in AlienVault-Database: http://labs.alienvault.com/labs/index.php/projects/open-source-ip-reputation-portal/information-about-ip/?ip=211.101.12.49", 
+        "FortiGuard": "down2.feiyang163.com Categorization: Unclassified", 
+        "URLQuery": {
+            "url": "down2.feiyang163.com", 
+            "urlResult": [
+                {
+                    "reportUrl": "http://down2.feiyang163.com/soft/wavtomp3.exe", 
+                    "alerts_ids": "0 / 2", 
+                    "report": "http://urlquery.net/report.php?id=8532147", 
+                    "datum": "2013-12-24 19:37:05", 
+                    "country": "China"
+                }, 
+                {
+                    "reportUrl": "http://down2.feiyang163.com/soft/wavtomp3.exe", 
+                    "alerts_ids": "0 / 2", 
+                    "report": "http://urlquery.net/report.php?id=8516734", 
+                    "datum": "2013-12-23 15:53:13", 
+                    "country": "China"
+                }, 
+                {
+                    "reportUrl": "http://down2.feiyang163.com/soft/wavtomp3.exe", 
+                    "alerts_ids": "0 / 2", 
+                    "report": "http://urlquery.net/report.php?id=8494901", 
+                    "datum": "2013-12-22 07:47:44", 
+                    "country": "China"
+                }
+            ]
+        }
+    }, 
+    "Info": {
+        "url": {
+            "url": "http://down2.feiyang163.com/soft/wavtomp3.exe", 
+            "hostname": "down2.feiyang163.com", 
+            "protocol": "http", 
+            "port": null, 
+            "md5": "c51a69f575a7d339777f620068fec269"
+        }, 
+        "analyse": {
+            "ragpicker_version": "0.02.10", 
+            "started": "2013-12-25T11:20:34.239821"
+        }, 
+        "file": {
+            "EXE": true, 
+            "extension": "exe", 
+            "DRIVER": false, 
+            "DLL": false, 
+            "sha256": "224bc63b775b6eaebbb2bb85e10ab2bc5f35e1249a4a2b316cb00ef1a9a71447", 
+            "sha1": "b2481e151a4c67e80850fed7fb22352b4a04688f", 
+            "md5": "ab994b31c75ab0fc6902ff35cabee76c", 
+            "type": "PE32", 
+            "isProbablyPacked": false, 
+            "digitalSignature": "UnsignedFile", 
+            "size": 746643
+        }
+    }, 
+    "OwnLocation": {
+        "country": "Deutschland", 
+        "ipaddress": "84.191.112.151"
+    }, 
+    "PEChecksum": {
+        "Claimed": "0x0", 
+        "Suspicious": true, 
+        "Actual": "0xbcf2b"
+    }, 
+    "PEID": [
+        "Overlay"
+    ], 
+    "SectionInformations": {
+        "NumberOfSections": 8, 
+        "Sections": [
+            {
+                "name": "CODE", 
+                "sizeOfRawData": 36864, 
+                "entropy": "6.6 [SUSPICIOUS]", 
+                "virtualSize": "0x8f94", 
+                "virtualAddress": "0x1000", 
+                "md5": "5b5fa5263e160a2eeee2ce0fa1f8a7db"
+            }, 
+            {
+                "name": "DATA", 
+                "sizeOfRawData": 1024, 
+                "entropy": 2.7, 
+                "virtualSize": "0x248", 
+                "virtualAddress": "0xa000", 
+                "md5": "d8b6954551cae1ae096a5422ff951dd5"
+            }, 
+            {
+                "name": "BSS", 
+                "sizeOfRawData": 0, 
+                "entropy": "0.0 [SUSPICIOUS]", 
+                "virtualSize": "0xe64", 
+                "virtualAddress": "0xb000", 
+                "md5": "d41d8cd98f00b204e9800998ecf8427e"
+            }, 
+            {
+                "name": ".idata", 
+                "sizeOfRawData": 2560, 
+                "entropy": 4.3, 
+                "virtualSize": "0x8f0", 
+                "virtualAddress": "0xc000", 
+                "md5": "1dd439711b01bd6df25c589b77cf553c"
+            }, 
+            {
+                "name": ".tls", 
+                "sizeOfRawData": 0, 
+                "entropy": "0.0 [SUSPICIOUS]", 
+                "virtualSize": "0x8", 
+                "virtualAddress": "0xd000", 
+                "md5": "d41d8cd98f00b204e9800998ecf8427e"
+            }, 
+            {
+                "name": ".rdata", 
+                "sizeOfRawData": 512, 
+                "entropy": "0.2 [SUSPICIOUS]", 
+                "virtualSize": "0x18", 
+                "virtualAddress": "0xe000", 
+                "md5": "d293bf8d4ebe9826d58e1d27c25fe4b6"
+            }, 
+            {
+                "name": ".reloc", 
+                "sizeOfRawData": 0, 
+                "entropy": "0.0 [SUSPICIOUS]", 
+                "virtualSize": "0x884", 
+                "virtualAddress": "0xf000", 
+                "md5": "d41d8cd98f00b204e9800998ecf8427e"
+            }, 
+            {
+                "name": ".rsrc", 
+                "sizeOfRawData": 10240, 
+                "entropy": 4.3, 
+                "virtualSize": "0x2800", 
+                "virtualAddress": "0x10000", 
+                "md5": "21f38e42290923f769ffed4da8d972f7"
+            }
+        ]
+    }, 
+    "SubFile": {
+        "Files": [
+            {
+                "FileType": "MS-DOS executable", 
+                "Desc": "File at 366452 size=22435560 (21.4 MB)"
+            }
+        ]
+    }, 
+    "SuspiciousApiFunctions": [
+        "VirtualAlloc", 
+        "GetModuleHandleA", 
+        "GetCommandLineA", 
+        "WriteFile", 
+        "GetFileSize", 
+        "CreateFileA", 
+        "RegOpenKeyExA", 
+        "RegCloseKey", 
+        "OpenProcessToken", 
+        "WriteFile", 
+        "VirtualProtect", 
+        "VirtualAlloc", 
+        "Sleep", 
+        "LoadLibraryA", 
+        "LoadLibraryA", 
+        "GetVersionExA", 
+        "GetProcAddress", 
+        "GetModuleHandleA", 
+        "GetModuleFileNameA", 
+        "GetFileSize", 
+        "GetFileAttributesA", 
+        "GetCommandLineA", 
+        "DeleteFileA", 
+        "CreateProcessA", 
+        "CreateFileA", 
+        "CreateDirectoryA"
+    ], 
+    "VirusTotal": {
+        "file": {
+            "positives": "21", 
+            "total": "49", 
+            "scan_date": "2013-12-22 18:20:21 UTC ( vor 2 Tage, 16 Stunden )", 
+            "first_submission": "2013-08-30 02:11:25 UTC ( vor 3 Monate, 3 Wochen )"
+        }
+    }, 
+    "score": "5.3"
+}

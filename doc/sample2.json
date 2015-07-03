@@ -1,0 +1,321 @@
+{
+    "AntiDBG": {
+        "Anti_Debug": "Yes", 
+        "API_Anti_Debug": [
+            "OutputDebugStringA"
+        ]
+    }, 
+    "AntiVM": [
+        "VMCheck.dll"
+    ], 
+    "AntivirusScanAvg": {
+        "Avg": "OK"
+    }, 
+    "AntivirusScanBitDefender": {
+        "BitDefender": null
+    }, 
+    "AntivirusScanFProt": {
+        "FProt": "OK"
+    }, 
+    "CheckEP": {
+        "posVsSections": "0/7", 
+        "Suspicious": false, 
+        "EP": "0x4014db", 
+        "Name": ".text"
+    }, 
+    "CheckRSRC": [
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x5190", 
+            "name": "RT_ICON", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0x2e8"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x5478", 
+            "name": "RT_ICON", 
+            "Type": "GLS_BINARY_LSB_FIRST", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0x128"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x55a0", 
+            "name": "RT_ICON", 
+            "Type": "data", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0xea8"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x6448", 
+            "name": "RT_GROUP_ICON", 
+            "Type": "MS", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0x30"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x6478", 
+            "name": "RT_VERSION", 
+            "Type": "Applesoft", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0x8a4"
+        }, 
+        {
+            "Lang": "LANG_NEUTRAL", 
+            "RVA": "0x6d1c", 
+            "name": "RT_MANIFEST", 
+            "Type": "XML", 
+            "Sublang": "SUBLANG_NEUTRAL", 
+            "Size": "0x341"
+        }
+    ], 
+    "Imports": [
+        {
+            "imports": [
+                "HeapAlloc", 
+                "HeapFree", 
+                "OutputDebugStringA", 
+                "lstrcpynW", 
+                "UnmapViewOfFile", 
+                "MultiByteToWideChar", 
+                "MapViewOfFile", 
+                "CloseHandle", 
+                "CreateFileMappingW", 
+                "GetFileSize", 
+                "CreateFileW", 
+                "lstrlenW", 
+                "GetCommandLineW", 
+                "ExitProcess", 
+                "Sleep", 
+                "DeleteFileW", 
+                "SetFileAttributesW", 
+                "GetFileAttributesW", 
+                "FreeLibrary", 
+                "GetProcAddress", 
+                "LoadLibraryW", 
+                "GetTempPathW", 
+                "GetModuleHandleW", 
+                "GetLastError", 
+                "GetModuleFileNameW", 
+                "GetTickCount", 
+                "GetCurrentThreadId", 
+                "GetSystemTimeAsFileTime", 
+                "GetCurrentProcessId", 
+                "GetProcessHeap", 
+                "ReadFile", 
+                "WriteFile", 
+                "SetFileTime", 
+                "SetFilePointer"
+            ], 
+            "name": "KERNEL32.dll"
+        }, 
+        {
+            "imports": [
+                "MessageBoxA", 
+                "wvsprintfA", 
+                "wsprintfW", 
+                "PostMessageW"
+            ], 
+            "name": "USER32.dll"
+        }, 
+        {
+            "imports": [
+                "GetFileVersionInfoW", 
+                "GetFileVersionInfoSizeW", 
+                "VerQueryValueW"
+            ], 
+            "name": "VERSION.dll"
+        }
+    ], 
+    "InetSourceAnalysis": {
+        "Alienvault": "108.162.197.200 is listed in AlienVault-Database: http://labs.alienvault.com/labs/index.php/projects/open-source-ip-reputation-portal/information-about-ip/?ip=108.162.197.200", 
+        "Robtex": {
+            "ipResult": [
+                {
+                    "ARecord": "This IP does not resolve to a domain"
+                }
+            ], 
+            "ip": "108.162.197.200"
+        }, 
+        "FortiGuard": "applicationscreditforally.asia Categorization: Malicious Websites", 
+        "URLVoid": {
+            "url": "applicationscreditforally.asia", 
+            "urlResult": [
+                {
+                    "IP": "108.162.197.200"
+                }, 
+                {
+                    "CountryCode": "(US) United States"
+                }, 
+                {
+                    "HTTPResponseCode": " 200"
+                }, 
+                {
+                    "WebsiteStatus": "The website is detected by 1 blacklist engine."
+                }, 
+                {
+                    "Blacklist": "Host is listed in blacklist at: http://www.scumware.org/search.scumware"
+                }
+            ]
+        }, 
+        "IPVoid": {
+            "ipResult": [
+                {
+                    "BlacklistStatus": "No Blacklist status"
+                }, 
+                {
+                    "Blacklist": "Host is not listed in a blacklist"
+                }, 
+                {
+                    "ISP": "No ISP listed"
+                }, 
+                {
+                    "GEOLocation": "No GEO location listed"
+                }
+            ], 
+            "ip": "108.162.197.200"
+        }
+    }, 
+    "Info": {
+        "url": {
+            "url": "http://applicationscreditforally.asia/v970?lfb&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&am&&&&&&&&&&&&&&&&&&&&&&", 
+            "hostname": "applicationscreditforally.asia", 
+            "protocol": "http", 
+            "port": null, 
+            "md5": "49f697c17606334e8b804d464de9c1d8"
+        }, 
+        "analyse": {
+            "ragpicker_version": "0.02.10", 
+            "started": "2013-12-23T17:40:46.565048"
+        }, 
+        "file": {
+            "EXE": true, 
+            "extension": "exe", 
+            "DRIVER": false, 
+            "DLL": false, 
+            "sha256": "9a1cdba9854fae99949c6bae53b96cf219b21aa2e942c763f7583061450be9f2", 
+            "sha1": "46d799789e56ba6b65d1477b9c9dd066274ae182", 
+            "md5": "90ba045b5c960dc8c1eec1063354976f", 
+            "type": "PE32", 
+            "isProbablyPacked": true, 
+            "digitalSignature": "SignedFile", 
+            "size": 321224
+        }
+    }, 
+    "OwnLocation": {
+        "country": "Deutschland", 
+        "ipaddress": "84.191.106.63"
+    }, 
+    "PEChecksum": {
+        "Claimed": "0x582e1", 
+        "Suspicious": true, 
+        "Actual": "0x566e6"
+    }, 
+    "SectionInformations": {
+        "NumberOfSections": 7, 
+        "Sections": [
+            {
+                "name": ".text", 
+                "sizeOfRawData": 7680, 
+                "entropy": "6.5 [SUSPICIOUS]", 
+                "virtualSize": "0x1df8", 
+                "virtualAddress": "0x1000", 
+                "md5": "b1ae6dcdc3a7ba319c6d5e0b1a2eadbc"
+            }, 
+            {
+                "name": ".rdata", 
+                "sizeOfRawData": 2048, 
+                "entropy": 4.7, 
+                "virtualSize": "0x702", 
+                "virtualAddress": "0x3000", 
+                "md5": "cd4f20f041a2da05dfe5974fe61bd4ec"
+            }, 
+            {
+                "name": ".data", 
+                "sizeOfRawData": 0, 
+                "entropy": "0.0 [SUSPICIOUS]", 
+                "virtualSize": "0x410", 
+                "virtualAddress": "0x4000", 
+                "md5": "d41d8cd98f00b204e9800998ecf8427e"
+            }, 
+            {
+                "name": ".rsrc", 
+                "sizeOfRawData": 8704, 
+                "entropy": 4.4, 
+                "virtualSize": "0x2060", 
+                "virtualAddress": "0x5000", 
+                "md5": "9dd3e80f629ba1fcf25b4aa1bad29e0d"
+            }, 
+            {
+                "name": ".reloc", 
+                "sizeOfRawData": 512, 
+                "entropy": 3.0, 
+                "virtualSize": "0x15c", 
+                "virtualAddress": "0x8000", 
+                "md5": "938152484b33bca77bd622973abb524e"
+            }, 
+            {
+                "name": ".tsustub", 
+                "sizeOfRawData": 121344, 
+                "entropy": "8.0 [SUSPICIOUS]", 
+                "virtualSize": "0x1d887", 
+                "virtualAddress": "0x9000", 
+                "md5": "869d9fca3720ce50daade645d39e3a9d"
+            }, 
+            {
+                "name": ".tsuarch", 
+                "sizeOfRawData": 174080, 
+                "entropy": "8.0 [SUSPICIOUS]", 
+                "virtualSize": "0x2a800", 
+                "virtualAddress": "0x27000", 
+                "md5": "ab8c6e249dd7013a0c944e1d2369c183"
+            }
+        ]
+    }, 
+    "SubFile": {
+        "Files": [
+            {
+                "FileType": "MS-DOS executable", 
+                "Desc": "File at 3719179 size=26642239 (25.4 MB)"
+            }
+        ]
+    }, 
+    "SuspiciousApiFunctions": [
+        "OutputDebugStringA", 
+        "MapViewOfFile", 
+        "CreateFileMappingW", 
+        "CreateFileMappingW", 
+        "GetFileSize", 
+        "CreateFileW", 
+        "GetCommandLineW", 
+        "Sleep", 
+        "DeleteFileW", 
+        "GetFileAttributesW", 
+        "GetProcAddress", 
+        "LoadLibraryW", 
+        "GetTempPathW", 
+        "GetModuleHandleW", 
+        "GetModuleFileNameW", 
+        "GetTickCount", 
+        "WriteFile"
+    ], 
+    "VerifySigs": {
+        "NotBefore": "24.08.2011 00:00:00 UTC", 
+        "ProgramURL": null, 
+        "PublisherCN": "COMODO Code Signing CA 2", 
+        "ProgramName": null, 
+        "NotAfter": "30.05.2020 10:48:38 UTC", 
+        "PublisherO": "COMODO CA Limited", 
+        "Issuer": "COMODO CA Limited"
+    }, 
+    "VirusTotal": {
+        "file": {
+            "verbose_msg": "Datei nicht gefunden"
+        }
+    }, 
+    "score": "5.3"
+}
