@@ -180,3 +180,147 @@ To stop ragpicker using the command:
 `./manager.py stop`
 
 #Ragpicker - System Design
+![System Design](https://raw.githubusercontent.com/robbyFux/malware-crawler/master/MalwareCrawler/doc/Ragpicker.png)
+![System Design](https://raw.githubusercontent.com/robbyFux/malware-crawler/master/MalwareCrawler/doc/Ragpicker-hpfriends.png)
+
+#Development
+
+Modules must be developed as ***yapsy-plugin*** and implement ***yapsy.IPlugin*** interface. Yapsy (Yet Another Plugin System) is a simple plugin system for Python applications. You can find the yapsy documentation here: http://yapsy.sourceforge.net
+
+The abstract classes for the modules they see under ***core/abstracts.py***
+
+##Used third party libraries
+
+Third party libraries are located under the subdirectory utils.
+
+Library |	Description |	Author
+------------- | ------------- | -------------
+python-magic |	python-magic is a python interface to the libmagic file type identification library |	Adam Hupp
+pdf-parser |	Use it to parse a PDF document |	Didier Stevens
+pdfid |	Tool to test a PDF file |	Didier Stevens
+pefile |	Portable Executable reader module |	Ero Carrera
+peutils |	Portable Executable utilities module |	Ero Carrera
+socks |	SocksiPy - Python SOCKS module. |	Dan-Haim
+hpfeeds |	Generic authenticated datafeed protocol |	Honeynet Project
+verify-sigs |	Compute hashes and validate signatures |	Google Inc.
+
+##Crawler Modules
+
+All crawler modules should be placed inside the folder at ***crawler/***.
+
+The crawler modules have a return-value of a map consisting of {MD5:URL}
+```python
+...            
+md5 = hashlib.md5(url).hexdigest()
+self.mapURL[md5] = url
+...
+```
+
+Crawler modules must implement the run method.
+
+All crawling modules have access to:
+
+***self.options:*** *self.options* is a dictionary containing all the options specified in the crawlers’s configuration section in *config/crawler.conf*. 
+
+For more information see: ***TODO*** CrawlerTemplate
+
+###Preprocessing Modules
+
+All preprocessing modules should be placed inside the folder at ***preProcessing/***.
+
+***TODO***
+
+##Processing Modules
+
+All processing modules should be placed inside the folder at ***processing/***.
+
+Every processing module will then be initialized and executed and the data returned will be appended in a data structure.
+
+This data structure is a simply Python dictionary that includes the results produced by all processing modules identified by their identification key.
+
+Every processing module should contain:
+
+- A class inheriting Processing.
+- A run() function.
+- A self.key attribute defining the name to be used as a subcontainer for the returned data.
+- A self.score attribute what the risk level determines (The value "-1" disabled this function) 
+
+Input Parameters of the method run is the class of ***objfile*** from ***core/objfile.py***.
+
+All processing modules have access to:
+
+- ***self.options:*** self.options is a dictionary containing all the options specified in the processing’s configuration section in ***config/processing.conf***.
+- ***self.task:*** task information we used for example for ***infos["started"] = self.task["started_on"]***. 
+
+For more information see: ***TODO*** ProcessingTemplate
+
+##Reporting Modules
+
+All reporting modules should be placed inside the folder at ***reporting/***.
+
+Every reporting module should contain:
+
+- A class inheriting Reporting.
+- A run() function. 
+
+Input Parameters of the method run is the ***results*** dictionary from the processing and the class of ***objfile*** from ***core/objfile.py***.
+
+All reporting modules have access to:
+
+- ***self.options***: self.options is a dictionary containing all the options specified in the report’s configuration section in ***config/reporting.conf***.
+- ***self.task***: task information we used for example for ***infos["started"] = self.task["started_on"]***. 
+
+For more information see: ***TODO*** ReportingTemplate
+
+#Currently implemented functionalities
+##CRAWLER
+
+     |-- cleanmx                   Fetching Malware-URLs from Cleanmx RSS (http://support.clean-mx.de)
+     |-- malShare                  Fetching Malware-URLs from MalShare daily list (http://www.malshare.com)
+     |-- malc0de                   Fetching Malware-URLs from Malc0de RSS (http://malc0de.com)
+     |-- malwarebl                 Fetching Malware-URLs from Malware Black List (http://www.malwareblacklist.com)
+     |-- malwaredl                 Fetching Malware-URLs from Malware Domain List (http://www.malwaredomainlist.com)
+     |-- secuboxlabs               Fetching Malware-URLs from SecuBox Labs (FRANCE) RSS (http://secuboxlabs.fr)
+     |-- spyeyetracker             Fetching Malware-URLs from SpyEyetracker RSS (https://spyeyetracker.abuse.ch)
+     |-- vxvault                   Fetching Malware-URLs from VXVault (http://vxvault.siri-urz.net)
+     |-- zeustracker               Fetching Malware-URLs from Zeustracker RSS (https://zeustracker.abuse.ch)
+ 
+
+##PROCESSING
+
+     |-- all_cuckooSandbox         Adds the Sample to the list of cuckoo-sandbox tasks to be processed and analyzed
+     |-- all_info                  Sample Base Infos (Don't disable "info"-Module!!!)
+     |-- all_subFile               Find subfile in any binary stream
+     |-- all_virustotal            Gets detection ratio from VirusTotal.com (via VT API)
+     |-- all_virustotalNoApi       Gets detection ratio from VirusTotal.com (via Website)
+     |-- antivirus_avg             Avg AntiVirus Scan (http://free.avg.com)
+     |-- antivirus_avira           Avira AntiVirus Scan (http://www.avira.com/de/avira-free-antivirus)
+     |-- antivirus_bitDefender     BitDefender AntiVirus Scan (http://www.bitdefender.co.uk/)
+     |-- antivirus_clamav          ClamAv AntiVirus Scan (http://www.clamav.net/lang/en/)
+     |-- antivirus_fprot           F-Prot AntiVirus Scan (http://www.f-prot.com/)
+     |-- net_getOwnLocation        Returns the own internet location.
+     |-- net_inetSourceAnalysis    Check IP and Host for reputation.
+     |-- pdf_pdfid                 PDF - Analyze the suspicious PDF documents
+     |-- pe_checkAntiDBG           PE - Check for suspicious anti debug API functions
+     |-- pe_checkAntiVM            PE - Check for anti virtual machine tricks
+     |-- pe_checkEP                PE - Alert if the EP section is not in a known good section or if its in the last PE section
+     |-- pe_checkRSRC              PE - Analyse and list .rsrc section
+     |-- pe_checkTLS               PE - List Thread Local Storage (TLS) Adresses
+     |-- pe_checksum               PE - Check for Suspicious Checksum
+     |-- pe_imports                PE - Analyse and list Import Address Table
+     |-- pe_peid                   PE - Detects most common packers, cryptors and compilers for PE files
+     |-- pe_sectionInfo            PE - Analyse and list the PE file sections
+     |-- pe_suspiciousApiFunctions PE - Check for Suspicious API Functions
+     |-- pe_timestamp              PE - TimeDateStamp is a 32 bit time at which this header was generated: is used in the process of "Binding"
+     |-- pe_verifySigs             PE - Compute hashes, validate digital signature and list details
+ 
+
+##REPORTING
+
+     |-- filedump                  Save sample file on the file system
+     |-- hpfriends                 Publishes the results on an HPFeeds channel
+     |-- jsondump                  Saves analysis results in JSON format
+     |-- mongodb                   Reporting-Modul for MongoDB
+     |-- reporthtml                HTML Reporting-Modul
+     |-- vxcage                    VxCage is a Python application for managing a malware samples repository
+ 
