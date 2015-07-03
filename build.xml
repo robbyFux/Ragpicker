@@ -1,0 +1,156 @@
+<?xml version="1.0" ?> 
+<project name="Ragpicker" default="default" basedir=".">
+	<property file="build.properties"/>
+	<property name="dumpdir" location="${src}/dumpdir"/>
+    <property name="dist"  location="versions"/>
+    <propertyset id="tdate" />
+    <tstamp>
+        <format property="tdate" pattern="dd.MM.yyyy HH:mm" />
+    </tstamp>
+	
+	<macrodef name="git">
+		<attribute name="command" />
+		<attribute name="dir" default="" />
+		<element name="args" optional="true" />
+		<sequential>
+			<echo message="git @{command}" />
+			<exec executable="git" dir="@{dir}">
+				<arg value="@{command}" />
+				<args/>
+			</exec>
+		</sequential>
+	</macrodef>
+	
+    <macrodef name="gitTag">
+        <attribute name="remoteName" />
+        <attribute name="tagName" />
+        <sequential>
+            <git command="tag" dir=".">
+                <args>
+                    <arg value="-f" />
+                    <arg value="'@{tagName}'" />
+                </args>
+            </git>
+            <git command="push" dir=".">
+                <args>
+                    <arg value="-f" />
+                    <arg value="@{remoteName}" />
+                    <arg value="'@{tagName}'" />
+                </args>
+            </git>
+        </sequential>
+    </macrodef>
+	
+	<target name="default" depends="clean,git-update,install"/>
+	<target name="dist" depends="clean,update-version,tar-ragpicker,git-update,git-tag"/>
+	
+	<target name="git-update">
+		<input message="Commit message" addproperty="commit-message" />
+		
+		<echo message="Commiting all changes with message ${commit-message}" />
+		<git command="add">
+			<args>
+				<arg value="." />
+			</args>
+		</git>
+		<git command="commit">
+			<args>
+				<arg value="-am ${commit-message}" />
+			</args>
+		</git>
+		<git command="push">
+			<args>
+				<arg value="code.google.com" />
+			</args>
+		</git>
+	</target>
+	
+    <target name="git-tag">
+    	<gitTag remoteName="code.google.com" tagname="V${ragpicker.version}" />
+    </target>
+	
+	<target name="clean"> 
+		<delete file="${dist}/ragpicker_v${ragpicker.version}.tar.gz"/>
+		<delete includeEmptyDirs="true">
+			<fileset dir="${dumpdir}/files">
+			  <include name="**/*"/>
+			  <exclude name="**/empty.txt"/>
+			</fileset>
+			<fileset dir="${dumpdir}/reports">
+			  <include name="**/*"/>
+			  <exclude name="**/empty.txt"/>
+			</fileset>			
+		   <fileset dir="${src}" includes="**/*.pyc"/>
+		</delete>
+	</target> 
+	
+	<target name="tar-ragpicker">
+	  <tar longfile="gnu" destfile="${dist}/ragpicker_v${ragpicker.version}.tar.gz" excludes="**" compression="gzip" basedir=".">
+	    <tarfileset dir="${src}">
+	        <include name="**"/>
+	    	<exclude name="**/_obsolet/**"/>
+	    </tarfileset>
+	  </tar>
+	</target>
+	
+	<target name="update-version">
+		<buildnumber/>
+		<property name="ragpicker.version" value="${ragpicker.build.major.number}.${ragpicker.build.minor.number}.${build.number}" />
+		
+		<echo>updating version to current datetime: ${tdate}</echo>
+		<echo>updating version: ${ragpicker.version}</echo>
+
+	    <replaceregexp file="${src}/core/constants.py"
+	                   match="(RAGPICKER_BUILD_DATE[ \t]*=[ \t]\'*)+.*\'$"
+	                   byline="true"
+	                   replace="\1${tdate}'" />
+		
+	    <replaceregexp file="${src}/core/constants.py"
+	                   match="(RAGPICKER_VERSION[ \t]*=[ \t]\'*)+.*\'$"
+	                   byline="true"
+	                   replace="\1${ragpicker.version}'" />
+		
+	    <replaceregexp file="${dist}/ragpicker_version.json"
+	    			   match="(\'ragpicker.build.major.number\':\'*)+.*\'$"
+	                   byline="true"
+	                   replace="\1${ragpicker.build.major.number}'" />
+		
+	    <replaceregexp file="${dist}/ragpicker_version.json"
+	                   match="(\'ragpicker.build.minor.number\':\'*)+.*\'$"
+	                   byline="true"
+	                   replace="\1${ragpicker.build.minor.number}'" />
+		
+	    <replaceregexp file="${dist}/ragpicker_version.json"
+	    			   match="(\'ragpicker.build.number\':\'*)+.*\'$"
+	                   byline="true"
+	                   replace="\1${build.number}'" />
+		
+	    <replaceregexp file="${dist}/ragpicker_version.json"
+	    			   match="(\'ragpicker.build.date\':\'*)+.*\'$"
+	                   byline="true"
+	                   replace="\1${tdate}'" />
+		
+	</target>
+	
+	<target name="install">
+		<delete includeEmptyDirs="true">
+			<fileset dir="${install_dir}">
+			  <include name="**/*"/>
+			  <exclude name="**/*.conf"/>
+			</fileset>		
+		</delete>		
+		
+		<copy todir="${install_dir}">
+			<fileset dir="${src}">
+			  <exclude name="**/*.conf"/>
+			  <exclude name="**/_obsolet/**"/>
+			</fileset>
+		</copy>
+		
+		<chmod dir="${install_dir}" includes="**/*" perm="ugo+r"/>
+		<chmod file="${install_dir}/ragpicker.py" perm="ugo+rx"/>
+		<chmod file="${install_dir}/manager.py" perm="ugo+rx"/>
+		<chmod file="${install_dir}/statistics.py" perm="ugo+rx"/>
+	</target>
+ 
+</project>
