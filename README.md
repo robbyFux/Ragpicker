@@ -180,8 +180,8 @@ To stop ragpicker using the command:
 `./manager.py stop`
 
 #Ragpicker - System Design
-![System Design](https://raw.githubusercontent.com/robbyFux/malware-crawler/master/MalwareCrawler/doc/Ragpicker.png)
-![System Design](https://raw.githubusercontent.com/robbyFux/malware-crawler/master/MalwareCrawler/doc/Ragpicker-hpfriends.png)
+![System Design](https://raw.githubusercontent.com/robbyFux/Ragpicker/master/doc/Ragpicker.png)
+![System Design](https://raw.githubusercontent.com/robbyFux/Ragpicker/master/doc/Ragpicker-hpfriends.png)
 
 #Development
 
