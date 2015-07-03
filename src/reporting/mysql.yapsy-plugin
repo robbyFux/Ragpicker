@@ -1,0 +1,8 @@
+[Core]
+Name = mysql
+Module = mysql
+   
+[Documentation]
+Description = Reporting-Modul for MySQL
+Author = Mark Lawrenz
+Version = 1.0

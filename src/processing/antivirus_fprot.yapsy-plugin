@@ -1,0 +1,8 @@
+[Core]
+Name = antivirus_fprot
+Module = antivirus_fprot
+   
+[Documentation]
+Description = F-Prot AntiVirus Scan (http://www.f-prot.com/)
+Author = Robby Zeitfuchs
+Version = 1.0

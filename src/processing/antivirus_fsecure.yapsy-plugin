@@ -1,0 +1,8 @@
+[Core]
+Name = antivirus_fsecure
+Module = antivirus_fsecure
+   
+[Documentation]
+Description = F-Secure Linux Security v10.10.142 (http://www.f-secure.com)
+Author = Mark Lawrenz
+Version = 1.0

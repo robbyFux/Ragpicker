@@ -1,0 +1,27 @@
+<div style="text-align: right;margin-top: 10px;"><a href="#top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEGSURBVDjLpZM/LwRRFMXPspmEaGc1shHRaiXsJ5GIRixbCr6SikxIlqgJM5UohIiGdofovHf/PZVmYwZvTntPfjnn3txWCAFNNFE33L/ZKXYv+1dRgL3r7bu0PbucJp3e4GLjtsrXGq9wkA8SU7tPk87i/MwCzAyP5QNeytcnJl46XMuoNoGKDoVlTkQhJpAgmJqcBjnqkqPTXxN8qz9cD6vdHtQMxXOBt49y5XjzLB/3tau6kWewKiwoRu8jZFvn+U++GgCBlWFBQY4qr1ANcAQxgQaFjwH4TwYrQ5skYBOYKbzjiASOwCrNd2BBwZ4jAcowGJgkAuAZ2dEJhAUqij//wn/1BesSumImTttSAAAAAElFTkSuQmCC" alt="^" title="Go to the top" border="0"></a></div>
+<tag id="family_information">
+<div class="section">
+<div class="section-title">Family Information</div>   
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+   <colgroup>
+      <col width="180">
+      <col width="*">
+   </colgroup>
+   <tbody>
+	  {% if results.Info.file.family.unpackedObjectSHA256 %}   
+      <tr>
+         <td><strong>Unpacked-Object SHA256</strong>:</td>
+         <td><span class="mono">{{results.Info.file.family.unpackedObjectSHA256}}</span></td>
+      </tr>
+      {% endif %}
+      
+      {% if results.Info.file.family.siblingObjectsSHA256 %}
+	      {% for siblingObject in results.Info.file.family.siblingObjectsSHA256 %}
+	      <tr>
+	         <td><strong>Sibling-Object SHA256</strong>:</td>
+	         <td>{{siblingObject}}</td>
+	      </tr>
+	      {% endfor %}
+      {% endif %}
+   </tbody>
+</table>

@@ -1,0 +1,8 @@
+[Core]
+Name = filedump
+Module = filedump
+   
+[Documentation]
+Description = Save sample file on the file system
+Author = Robby Zeitfuchs
+Version = 1.0

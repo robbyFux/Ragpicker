@@ -1,0 +1,369 @@
+{% if results.OfficeScan %}
+<fieldset>
+   <legend><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALLSURBVDjLpZPfT1JhGMfprnnd39B1986rtja3TEWGBJocEYbya+oBzgJRt8xwKjoCf1SgqKSiGUqlYiZzGpY6XebMXFOxocIFK8p1c76d8zpXq9lNF8/27H2f7+f5Pu8PAQDB/8RfC2/u1WVErHTmS1oniyko7Bfmk4iVlmCG1t6KWOhMvuZcwCpTHU0a9EioVTjiRCmGQYqmSZ7QlCNZacCyuSp6LuCjVMR+sVpx4uzAkboMMYmQBJ/za/zeB3EOGzbqLhNAndeWYXRVZxocWpl5UI9d4XWkfT4ktRU45kbgRWewY5UScaqIGykXHOAKAdz2GKMNIStsYyYwAQP2RDfwIxjCN7cLiQoVsZys0uNzkZSI+VH2Jfm/AJqeMtYxfRe+xS5YR2lC5wFpdwfSTidSLc04lBcR8SFVfAr43YHSW4zZzSk4phvBjFRi52YB6Zx2d+JreztSTXbES2REyAMOuO5bomzWZHNfNTf7MwTqHjmWPi1gaiOE4aV+dAfqMa+jsCvJIzfBu+DP4kAmwY4wG7MKOWrtflR2R6BpGIgKyntLsbA9h4m1UQRXA/BHPTAN62CzuBClpNwN5GFXnItoiQR3mDao2sJwTKzD4ltELjPECjReBTu2MoSRZT+GlnzwLnSBHtIg1/oET6M7qPe+grJlkoj44AHq9hnIm15AaAtCUOXQZ2nd6ri2T4WuOSf6X3vIWeTbxjCzFkNgfhueyXeo6XsNQ2cERfbnRFzaOg1RXfD08ZycnFwwtOkUSheVrvApUN5LEfrkyh4G5rbwmItH0xuQN08SMcU54gHEwZ8vUd+qvaR3aC+Ka0dZb/g9POFNPOQc3OfsF9tPO/MAcf04coyD7Lm/TGXtyJJZeuISrtAeeAtXaB2K1jCkjc+QYw5AbHyQoEzOa//8qvxo6pruskKmNy2uG+csj6HA2PtdbnZVn9X8BLLktmdBdpY6AAAAAElFTkSuQmCC" alt="" border="0">
+      Office-Analysis <a href="javascript:showHide('OfficeScan');"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC" alt="+" align="absmiddle" border="0">
+      </a>
+   </legend>
+   <div id="OfficeScan" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td class="title">OfficeMalScan-Info</td>
+            </tr>
+            {% if results.OfficeScan.info %}
+            {% for info in results.OfficeScan.info %}
+            <tr class={{ loop.cycle('alternate', 'row') }}>
+            <td class="row">{{info}}</td>
+            </tr>
+            {% endfor%}
+            {% endif %}
+         </tbody>
+      </table>
+      <div class="space-small"></div>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td class="title">OfficeMalScan-Scan</td>
+            </tr>
+            {% if results.OfficeScan.scan %}
+            {% for scan in results.OfficeScan.scan %}
+            <tr class={{ loop.cycle('alternate', 'row') }}>
+            <td class="row">{{scan}}</td>
+            </tr>
+            {% endfor%}
+            {% endif %}
+         </tbody>
+      </table>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="100" />
+            <col width="400" />
+            <col width="*" />
+         </colgroup>
+         <tbody>
+		    <tr>
+		      <td class="title" colspan="3">Decalage-olevba</td>
+		    </tr>
+            <tr>
+               	<td><strong>Type</strong></td>
+				<td><strong>Description</strong></td>
+				<td><strong>Value</strong></td>
+            </tr>
+            {% if results.OfficeScan.olevba %}
+            	{% if results.OfficeScan.olevba.AutoExec %}
+		            {% for value in results.OfficeScan.olevba.AutoExec %}
+		            <tr class="row">
+		            	<td class="row">AutoExec</td>
+		            	<td class="row">{{value.description}}</td>
+		            	<td class="row">{{value.keyword}}</td>
+		            </tr>
+		            {% endfor%}
+	            {% endif %}
+            	{% if results.OfficeScan.olevba.Suspicious %}
+		            {% for value in results.OfficeScan.olevba.Suspicious %}
+		            <tr class="alternate">
+		            	<td class="row">Suspicious</td>
+		            	<td class="row">{{value.description}}</td>
+		            	<td class="row">{{value.keyword}}</td>
+		            </tr>
+		            {% endfor%}
+	            {% endif %}	            
+            	{% if results.OfficeScan.olevba.IOC %}
+		            {% for value in results.OfficeScan.olevba.IOC %}
+		            <tr class="row">
+		            	<td class="row">IOC</td>
+		            	<td class="row">{{value.description}}</td>
+		            	<td class="row">{{value.value}}</td>		            	
+		            </tr>
+		            {% endfor%}
+	            {% endif %}	            
+            {% endif %}
+         </tbody>
+      </table>      
+	{% if results.OfficeScan.exifTool %}
+      <div class="space-small"></div>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="150">
+            <col width="*">
+         </colgroup>
+         <tbody>
+            <tr>
+               <td class="title">ExifTool-Meta</td>
+               <td class="title">ExifTool-Value</td>
+            </tr>
+            {% if results.OfficeScan.exifTool.FileType %}
+            <tr>
+               <td><strong>FileType</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.FileType}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.MIMEType %}
+            <tr>
+               <td><strong>MIMEType</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.MIMEType}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.FileSize %}
+            <tr>
+               <td><strong>FileSize</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.FileSize}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Author %}
+            <tr>
+               <td><strong>Author</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Author}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.LastModifiedBy %}
+            <tr>
+               <td><strong>LastModifiedBy</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.LastModifiedBy}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Company %}
+            <tr>
+               <td><strong>Company</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Company}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Keywords %}
+            <tr>
+               <td><strong>Keywords</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Keywords}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.CreateDate %}
+            <tr>
+               <td><strong>CreateDate</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.CreateDate}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.ModifyDate %}
+            <tr>
+               <td><strong>ModifyDate</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.ModifyDate}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.LastPrinted %}
+            <tr>
+               <td><strong>LastPrinted</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.LastPrinted}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.TotalEditTime %}
+            <tr>
+               <td><strong>TotalEditTime</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.TotalEditTime}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.RevisionNumber %}
+            <tr>
+               <td><strong>RevisionNumber</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.RevisionNumber}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.CompObjUserType %}
+            <tr>
+               <td><strong>CompObjUserType</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.CompObjUserType}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Software %}
+            <tr>
+               <td><strong>Software</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Software}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.AppVersion %}
+            <tr>
+               <td><strong>AppVersion</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.AppVersion}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.CodePage %}
+            <tr>
+               <td><strong>CodePage</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.CodePage}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Template %}
+            <tr>
+               <td><strong>Template</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Template}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Pages %}
+            <tr>
+               <td><strong>Pages</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Pages}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Slides %}
+            <tr>
+               <td><strong>Slides</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Slides}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.HiddenSlides %}
+            <tr>
+               <td><strong>HiddenSlides</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.HiddenSlides}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Paragraphs %}
+            <tr>
+               <td><strong>Paragraphs</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Paragraphs}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Lines %}
+            <tr>
+               <td><strong>Lines</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Lines}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Words %}
+            <tr>
+               <td><strong>Words</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Words}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.exifTool.Characters %}
+            <tr>
+               <td><strong>Characters</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Characters}}</span></td>
+            </tr>
+            {% endif %}                        
+            {% if results.OfficeScan.exifTool.CharCountWithSpaces %}
+            <tr>
+               <td><strong>CharCountWithSpaces</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.CharCountWithSpaces}}</span></td>
+            </tr>
+            {% endif %} 
+            {% if results.OfficeScan.exifTool.Notes %}
+            <tr>
+               <td><strong>Notes</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Notes}}</span></td>
+            </tr>
+            {% endif %} 
+            {% if results.OfficeScan.exifTool.PresentationTarget %}
+            <tr>
+               <td><strong>PresentationTarget</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.PresentationTarget}}</span></td>
+            </tr>
+            {% endif %} 
+            {% if results.OfficeScan.exifTool.MMClips %}
+            <tr>
+               <td><strong>MMClips</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.MMClips}}</span></td>
+            </tr>
+            {% endif %} 
+            {% if results.OfficeScan.exifTool.LinksUpToDate %}
+            <tr>
+               <td><strong>LinksUpToDate</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.LinksUpToDate}}</span></td>
+            </tr>
+            {% endif %} 
+            {% if results.OfficeScan.exifTool.SharedDoc %}
+            <tr>
+               <td><strong>SharedDoc</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.SharedDoc}}</span></td>
+            </tr>
+            {% endif %} 
+            {% if results.OfficeScan.exifTool.Security %}
+            <tr>
+               <td><strong>Security</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.Security}}</span></td>
+            </tr>
+            {% endif %} 
+            {% if results.OfficeScan.exifTool.HyperlinksChanged %}
+            <tr>
+               <td><strong>HyperlinksChanged</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.HyperlinksChanged}}</span></td>
+            </tr>
+            {% endif %} 
+            {% if results.OfficeScan.exifTool.ExifToolVersion %}
+            <tr>
+               <td><strong>ExifToolVersion</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.ExifToolVersion}}</span></td>
+            </tr>
+            {% endif %} 
+            {% if results.OfficeScan.exifTool.ExifToolWarning %}
+            <tr>
+               <td><strong>ExifToolWarning</strong></td>
+               <td><span class="mono">{{results.OfficeScan.exifTool.ExifToolWarning}}</span></td>
+            </tr>
+            {% endif %} 
+         </tbody>
+      </table>  
+    {% endif %}
+    {% if results.OfficeScan.meta %}
+      <div class="space-small"></div>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="150">
+            <col width="*">
+         </colgroup>
+         <tbody>
+            <tr>
+               <td class="title">OleFileIO-Meta</td>
+               <td class="title">OleFileIO-Value</td>
+            </tr>
+            {% if results.OfficeScan.meta.Codepage %}
+            <tr>
+               <td><strong>Codepage</strong></td>
+               <td><span class="mono">{{results.OfficeScan.meta.Codepage}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.meta.Title %}
+            <tr>
+               <td><strong>Title</strong></td>
+               <td><span class="mono">{{results.OfficeScan.meta.Title}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.meta.Subject %}
+            <tr>
+               <td><strong>Subject</strong></td>
+               <td><span class="mono">{{results.OfficeScan.meta.Subject}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.meta.Author %}
+            <tr>
+               <td><strong>Author</strong></td>
+               <td><span class="mono">{{results.OfficeScan.meta.Author}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.meta.LastSavedBy %}
+            <tr>
+               <td><strong>LastSavedBy</strong></td>
+               <td><span class="mono">{{results.OfficeScan.meta.LastSavedBy}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.meta.CreationDate %}
+            <tr>
+               <td><strong>CreationDate</strong></td>
+               <td><span class="mono">{{results.OfficeScan.meta.CreationDate}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.OfficeScan.meta.LastSavedTime %}
+            <tr>
+               <td><strong>LastSavedTime</strong></td>
+               <td><span class="mono">{{results.OfficeScan.meta.LastSavedTime}}</span></td>
+            </tr>
+            {% endif %}
+            <tr>
+               <td><strong>isEncrypted</strong></td>
+               {% if results.OfficeScan.meta.isEncrypted == True %}
+               <td><span class="mono">True</span></td>
+               {% else %}
+               <td><span class="mono">False</span></td>
+               {% endif %}
+            </tr>
+         </tbody>
+      </table>
+	{% endif %}      
+   </div>
+</fieldset>
+{% endif %}

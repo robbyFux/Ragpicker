@@ -1,0 +1,31 @@
+{% if results.SubFile %}
+<fieldset>
+   <legend>Subfile</legend>
+   <div id="Subfile" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="150">
+            <col width="*">
+         </colgroup>
+         <tbody>
+            {% if results.SubFile.Errors %}
+            {% for errors in results.SubFile.Errors %}        
+            <tr>
+               <td><strong>Error:</strong></td>
+               <td>{{errors}}</td>
+            </tr>
+            {% endfor%}	
+            {% endif %}
+            {% if results.SubFile.Files %}
+            {% for file in results.SubFile.Files %}        
+            <tr>
+               <td><strong>{{ file.FileType }}:</strong></td>
+               <td><span class="mono">{{ file.Desc }}</span></td>
+            </tr>
+            {% endfor%}	
+            {% endif %}
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+{% endif %}

@@ -1,0 +1,9 @@
+[Core]
+Name = all_info
+Module = all_info
+   
+[Documentation]
+Description = Sample Base Infos (Don't disable "info"-Module!!!)
+Author = Robby Zeitfuchs
+Version = 1.0
+Website = 

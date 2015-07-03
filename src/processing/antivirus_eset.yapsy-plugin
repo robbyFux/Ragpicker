@@ -1,0 +1,8 @@
+[Core]
+Name = antivirus_eset
+Module = antivirus_eset
+   
+[Documentation]
+Description = ESET File Security für Linux v4.0.10 (http://www.eset.com)
+Author = Mark Lawrenz
+Version = 1.0

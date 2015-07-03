@@ -1,0 +1,8 @@
+[Core]
+Name = vxvault
+Module = vxvault
+   
+[Documentation]
+Description = Fetching Malware-URLs from VXVault (http://vxvault.siri-urz.net)
+Author = Robby Zeitfuchs
+Version = 1.0

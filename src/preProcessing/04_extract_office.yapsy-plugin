@@ -1,0 +1,8 @@
+[Core]
+Name = 04_extract_office
+Module = 04_extract_office
+   
+[Documentation]
+Description = Extract PE-Files from Office-Documents
+Author = Robby Zeitfuchs
+Version = 1.0

@@ -1,0 +1,181 @@
+{% if results.InetSourceAnalysis %}
+<tag id="network_analysis">
+<div class="section">
+<div class="section-title">Network Analysis</div>
+<fieldset>
+   <legend><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMtSURBVDjLVZNLa1xlAIafc5szk8xkMkkm5MKY2EpT2qa2MTVCmoLS2gq6EKooimAW7iQb/0I2bgTRIog0oFW7KQpCS7VqrSmmJGlSQtswqWlLLmbGmcmcZM6cy/edz00r6bt8eXh4N6+mlGJnxiZHR4APgSNAFjCBKjClInXm05Gzl3by2mPB2OSoCUwAp1/LHbcziSyO24gbgJAegg2urF8UUsifhZBvfvXK99v/C8YmRy3gt8G2/cMv517E8Wx8ApYcjZiyKbkRSgQkcFn3rzG9Nn1LhOLYt2/8UNUfLZkYaN0zfLRrkLIMCHUNIXTqIoZLjLJvU/ASrFQtnko+z2BH38HAD78DMConHh4FPn5nz6vGgqyxTp16JNj2kpR9C8eD/OoW1VoNO1NCS+d5oW0vV27f2PX11MS8MTR6+JOTXUMHNCPBui5AtdMpk8xsGNQ9ndur20TxCnbPIn5TnmJUwaxIDrTm9Jn7d1tM4EiuqZs5d41iXGefsZsIwYNCgOfVSXconJbLLEWb4CuahU2+6HO8d4DQF/0m0NpgNvLAXaPgu6QadrEZpKhUItJZj/aMS1EewvHnsdUWW/+WKG82kEykCAPRbCqlNE1B4DsocpiW5OJfIVoiyfqSQFdNdGXrpLZGcFZDPKYJg2VQCiGEZkoRlZ3A6W41mknFn2WlaOKFFrG4Tbw9wb2/S3g3miHySLdbNDd2kzYKVGpVpIiqugjF7P3yQ55pyLFWmCSyVokZPqHnEoYmsWQGuyWOGdexNIkRFOnqbGN5bRngjh4G4rMLd6+KnmQW012lWrpOJuNjCh9LU9i6gRkEZHIrpNv/QK8vcijXz5lfLijgS+PmuYV75+fPDXr1Wt9znfsouy5x+2miuoltW1iawBJV0o0/wT8lBvbv5WZ+gaWNlasz43MfmQChH777e37uT78eHDx5+BiLBROjqhDaFmGkQ1KS6+mlr7+XX2evc+nWVB54+4kznfr8pZQIxXkRyhPvDb9vIjtQqgFN12hLO2yUZ/ni8o8SuAa8NTM+t/GE4HGGx4del0J+IGXUH8ko86iuAneAszPjc9/s5P8DuO6ZcsXuRqAAAAAASUVORK5CYII=" alt="" border="0">
+      URL <a href="javascript:showHide('url');"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC" alt="+" align="absmiddle" border="0">
+      </a>
+   </legend>
+   <div id="url" class="section-nested" style="display: block; ">
+      {% if results.InetSourceAnalysis.FortiGuard %}    
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td class="title">FortiGuard</td>
+            </tr>
+            <tr class="row">
+               <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <colgroup>
+                     <col width="150">
+                     <col width="*">
+                  </colgroup>
+                  <tbody>
+                     <tr>
+                        <td><strong>Result</strong>:</td>
+                        <td><span class="mono">{{results.InetSourceAnalysis.FortiGuard }}</span></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </tr>
+         </tbody>
+      </table>
+      {% endif %}
+      {% if results.InetSourceAnalysis.URLVoid %}    
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td class="title">URLVoid: {{results.InetSourceAnalysis.URLVoid.url }}</td>
+            </tr>
+            <tr class="row">
+               <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <colgroup>
+                     <col width="150">
+                     <col width="*">
+                  </colgroup>
+                  <tbody>
+                     {% if results.InetSourceAnalysis.URLVoid.urlResult %} 
+                     {% if results.InetSourceAnalysis.URLVoid.urlResult.IP %}
+                     <tr>
+                        <td><strong>IP</strong>:</td>
+                        <td><span class="mono">{{results.InetSourceAnalysis.URLVoid.urlResult.IP}}</span></td>
+                     </tr>
+                     {% endif %}
+                     {% if results.InetSourceAnalysis.URLVoid.urlResult.CountryCode %}
+                     <tr>
+                        <td><strong>Country Code</strong>:</td>
+                        <td><span class="mono">{{results.InetSourceAnalysis.URLVoid.urlResult.CountryCode}}</span></td>
+                     </tr>
+                     {% endif %}
+                     {% if results.InetSourceAnalysis.URLVoid.urlResult.HTTPResponseCode %}
+                     <tr>
+                        <td><strong>HTTP-Response Code</strong>:</td>
+                        <td><span class="mono">{{results.InetSourceAnalysis.URLVoid.urlResult.HTTPResponseCode}}</span></td>
+                     </tr>
+                     {% endif %}
+                     {% if results.InetSourceAnalysis.URLVoid.urlResult.BlacklistStatus %}
+                     <tr>
+                        <td><strong>Blacklist Status</strong>:</td>
+                        <td><span class="mono">{{results.InetSourceAnalysis.URLVoid.urlResult.BlacklistStatus}}</span></td>
+                     </tr>
+                     {% endif %}
+                     {% if results.InetSourceAnalysis.URLVoid.urlResult.Blacklists %}
+                     {% for blacklist in results.InetSourceAnalysis.URLVoid.urlResult.Blacklists %}
+                     <tr>
+                        <td><strong>Blacklist</strong>:</td>
+                        <td><span class="mono">{{blacklist.Blacklist}}</span></td>
+                     </tr>
+                     {% endfor%}	
+                     {% endif %}  
+                     {% endif %} 	
+                  </tbody>
+               </table>
+            </tr>
+         </tbody>
+      </table>
+      {% endif %}
+   </div>
+</fieldset>
+<div class="space-small"></div>
+<fieldset>
+<legend><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMtSURBVDjLVZNLa1xlAIafc5szk8xkMkkm5MKY2EpT2qa2MTVCmoLS2gq6EKooimAW7iQb/0I2bgTRIog0oFW7KQpCS7VqrSmmJGlSQtswqWlLLmbGmcmcZM6cy/edz00r6bt8eXh4N6+mlGJnxiZHR4APgSNAFjCBKjClInXm05Gzl3by2mPB2OSoCUwAp1/LHbcziSyO24gbgJAegg2urF8UUsifhZBvfvXK99v/C8YmRy3gt8G2/cMv517E8Wx8ApYcjZiyKbkRSgQkcFn3rzG9Nn1LhOLYt2/8UNUfLZkYaN0zfLRrkLIMCHUNIXTqIoZLjLJvU/ASrFQtnko+z2BH38HAD78DMConHh4FPn5nz6vGgqyxTp16JNj2kpR9C8eD/OoW1VoNO1NCS+d5oW0vV27f2PX11MS8MTR6+JOTXUMHNCPBui5AtdMpk8xsGNQ9ndur20TxCnbPIn5TnmJUwaxIDrTm9Jn7d1tM4EiuqZs5d41iXGefsZsIwYNCgOfVSXconJbLLEWb4CuahU2+6HO8d4DQF/0m0NpgNvLAXaPgu6QadrEZpKhUItJZj/aMS1EewvHnsdUWW/+WKG82kEykCAPRbCqlNE1B4DsocpiW5OJfIVoiyfqSQFdNdGXrpLZGcFZDPKYJg2VQCiGEZkoRlZ3A6W41mknFn2WlaOKFFrG4Tbw9wb2/S3g3miHySLdbNDd2kzYKVGpVpIiqugjF7P3yQ55pyLFWmCSyVokZPqHnEoYmsWQGuyWOGdexNIkRFOnqbGN5bRngjh4G4rMLd6+KnmQW012lWrpOJuNjCh9LU9i6gRkEZHIrpNv/QK8vcijXz5lfLijgS+PmuYV75+fPDXr1Wt9znfsouy5x+2miuoltW1iawBJV0o0/wT8lBvbv5WZ+gaWNlasz43MfmQChH777e37uT78eHDx5+BiLBROjqhDaFmGkQ1KS6+mlr7+XX2evc+nWVB54+4kznfr8pZQIxXkRyhPvDb9vIjtQqgFN12hLO2yUZ/ni8o8SuAa8NTM+t/GE4HGGx4del0J+IGXUH8ko86iuAneAszPjc9/s5P8DuO6ZcsXuRqAAAAAASUVORK5CYII=" alt="" border="0">
+   IP <a href="javascript:showHide('ip');"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC" alt="+" align="absmiddle" border="0">
+   </a>
+</legend>
+<div id="ip" class="section-nested" style="display: block; ">
+{% if results.InetSourceAnalysis.IPVoid %}
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+   <tbody>
+      <tr>
+         <td class="title">IPVoid: {{results.InetSourceAnalysis.IPVoid.ip }}</td>
+      </tr>
+      <tr class="row">
+         <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <colgroup>
+               <col width="150">
+               <col width="*">
+            </colgroup>
+            <tbody>
+               {% if results.InetSourceAnalysis.IPVoid.ipResult.BlacklistStatus %}
+               <tr>
+                  <td><strong>Blacklist Status</strong>:</td>
+                  <td><span class="mono">{{results.InetSourceAnalysis.IPVoid.ipResult.BlacklistStatus}}</span></td>
+               </tr>
+               {% endif %}   
+               {% if results.InetSourceAnalysis.IPVoid.ipResult.CountryCode %}
+               <tr>
+                  <td><strong>Country Code</strong>:</td>
+                  <td><span class="mono">{{results.InetSourceAnalysis.IPVoid.ipResult.CountryCode}}</span></td>
+               </tr>
+               {% endif %}  
+               {% if results.InetSourceAnalysis.IPVoid.ipResult.ISP %}
+               <tr>
+                  <td><strong>ISP</strong>:</td>
+                  <td><span class="mono">{{results.InetSourceAnalysis.IPVoid.ipResult.ISP}}</span></td>
+               </tr>
+               {% endif %}  
+               {% if results.InetSourceAnalysis.IPVoid.ipResult.Blacklists %}
+               {% for blacklist in results.InetSourceAnalysis.IPVoid.ipResult.Blacklists %}
+               <tr>
+                  <td><strong>Blacklist</strong>:</td>
+                  <td><span class="mono">{{blacklist.Blacklist}}</span></td>
+               </tr>
+               {% endfor%}	
+               {% endif %} 
+            </tbody>
+         </table>
+      </tr>
+   </tbody>
+</table>
+{% endif %}
+<br>
+{% if results.InetSourceAnalysis.URLQuery %}  
+<fieldset>
+   <legend><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMtSURBVDjLVZNLa1xlAIafc5szk8xkMkkm5MKY2EpT2qa2MTVCmoLS2gq6EKooimAW7iQb/0I2bgTRIog0oFW7KQpCS7VqrSmmJGlSQtswqWlLLmbGmcmcZM6cy/edz00r6bt8eXh4N6+mlGJnxiZHR4APgSNAFjCBKjClInXm05Gzl3by2mPB2OSoCUwAp1/LHbcziSyO24gbgJAegg2urF8UUsifhZBvfvXK99v/C8YmRy3gt8G2/cMv517E8Wx8ApYcjZiyKbkRSgQkcFn3rzG9Nn1LhOLYt2/8UNUfLZkYaN0zfLRrkLIMCHUNIXTqIoZLjLJvU/ASrFQtnko+z2BH38HAD78DMConHh4FPn5nz6vGgqyxTp16JNj2kpR9C8eD/OoW1VoNO1NCS+d5oW0vV27f2PX11MS8MTR6+JOTXUMHNCPBui5AtdMpk8xsGNQ9ndur20TxCnbPIn5TnmJUwaxIDrTm9Jn7d1tM4EiuqZs5d41iXGefsZsIwYNCgOfVSXconJbLLEWb4CuahU2+6HO8d4DQF/0m0NpgNvLAXaPgu6QadrEZpKhUItJZj/aMS1EewvHnsdUWW/+WKG82kEykCAPRbCqlNE1B4DsocpiW5OJfIVoiyfqSQFdNdGXrpLZGcFZDPKYJg2VQCiGEZkoRlZ3A6W41mknFn2WlaOKFFrG4Tbw9wb2/S3g3miHySLdbNDd2kzYKVGpVpIiqugjF7P3yQ55pyLFWmCSyVokZPqHnEoYmsWQGuyWOGdexNIkRFOnqbGN5bRngjh4G4rMLd6+KnmQW012lWrpOJuNjCh9LU9i6gRkEZHIrpNv/QK8vcijXz5lfLijgS+PmuYV75+fPDXr1Wt9znfsouy5x+2miuoltW1iawBJV0o0/wT8lBvbv5WZ+gaWNlasz43MfmQChH777e37uT78eHDx5+BiLBROjqhDaFmGkQ1KS6+mlr7+XX2evc+nWVB54+4kznfr8pZQIxXkRyhPvDb9vIjtQqgFN12hLO2yUZ/ni8o8SuAa8NTM+t/GE4HGGx4del0J+IGXUH8ko86iuAneAszPjc9/s5P8DuO6ZcsXuRqAAAAAASUVORK5CYII=" alt="" border="0">
+      urlquery.net <a href="javascript:showHide('urlquery');"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC" alt="+" align="absmiddle" border="0">
+      </a>
+   </legend>
+   <div id="urlquery" class="section-nested" style="display: block; ">
+      {% if results.InetSourceAnalysis.URLQuery.urlResult != 'NOT listed' %}
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="120px">
+            <col width="80px">
+            <col width="120px">
+            <col width="*">
+         </colgroup>
+         <tbody>
+            <tr>
+               <td class="title">Datum</td>
+               <td class="title">Alerts / IDS</td>
+               <td class="title">Country</td>
+               <td class="title">Report URL</td>
+            </tr>
+            {% for result in results.InetSourceAnalysis.URLQuery.urlResult %}
+            <tr class={{ loop.cycle('alternate', 'row') }}>
+            <td class="row">{{result.datum}}</td>
+            <td class="row">{{result.alerts_ids}}</td>
+            <td class="row">{{result.country}}</td>
+            <td class="row"><a title='{{result.reportUrl}}' href='{{result.report}}'  target="_blank">{{result.reportUrl}}</a></td>
+            </tr>
+            {% endfor%}	
+         </tbody>
+      </table>
+      {% else %}
+      <div><span class="mono">{{results.InetSourceAnalysis.URLQuery.url}} NOT listed</span></div>
+      {% endif %}
+   </div>
+</fieldset>
+<div class="space-small"></div>
+{% endif %}
+{% endif %}

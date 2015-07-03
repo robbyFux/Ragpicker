@@ -1,0 +1,8 @@
+[Core]
+Name = antivirus_teamcymru
+Module = antivirus_teamcymru
+   
+[Documentation]
+Description = Malware Hash Registry (MHR) lookup (https://www.team-cymru.org)
+Author = Robby Zeitfuchs
+Version = 1.0

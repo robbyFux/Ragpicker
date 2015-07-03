@@ -1,0 +1,9 @@
+[Core]
+Name = all_virustotal
+Module = all_virustotal
+   
+[Documentation]
+Description = Gets detection ratio from VirusTotal.com (via VT API)
+Author = Robby Zeitfuchs
+Version = 1.0
+Website = 

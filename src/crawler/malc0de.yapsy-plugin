@@ -1,0 +1,8 @@
+[Core]
+Name = malc0de
+Module = malc0de
+   
+[Documentation]
+Description = Fetching Malware-URLs from Malc0de RSS (http://malc0de.com)
+Author = Robby Zeitfuchs
+Version = 1.0

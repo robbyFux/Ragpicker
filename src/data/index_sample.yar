@@ -1,0 +1,8 @@
+include "yara_signatures/sample_capabilities.yar"
+include "yara_signatures/sample_embedded.yar"
+include "yara_signatures/sample_kins.yar"
+include "yara_signatures/sample_njRAT.yar"
+include "yara_signatures/sample_vmdetect.yar"
+include "yara_signatures/sample_blackliststrings.yar"
+include "yara_signatures/sample_blackListFunctions.yar"
+include "yara_signatures/sample_maldoc.yara"

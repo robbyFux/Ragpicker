@@ -1,0 +1,8 @@
+[Core]
+Name = vxcage
+Module = vxcage
+   
+[Documentation]
+Description = VxCage is a Python application for managing a malware samples repository
+Author = Robby Zeitfuchs
+Version = 1.0

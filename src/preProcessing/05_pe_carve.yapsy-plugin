@@ -1,0 +1,8 @@
+[Core]
+Name = 05_pe_carve
+Module = 05_pe_carve
+   
+[Documentation]
+Description = Carve out embeddded executables
+Author = Robby Zeitfuchs
+Version = 1.0

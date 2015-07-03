@@ -1,0 +1,8 @@
+[Core]
+Name = 03_extract_rsrc
+Module = 03_extract_rsrc
+   
+[Documentation]
+Description = Extract .rsrc-Section
+Author = Robby Zeitfuchs
+Version = 1.0

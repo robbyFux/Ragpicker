@@ -1,0 +1,104 @@
+<tag id="file_information">
+<div class="section">
+<div class="section-title">File Information</div>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+   <colgroup>
+      <col width="150">
+      <col width="*">
+   </colgroup>
+   <tbody>
+      {% if results.Info %}       
+      <tr>
+         <td><strong>Ragpicker-Version</strong>:</td>
+         <td><span class="mono">v{{results.Info.analyse.ragpicker_version}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>Analysis Started</strong>:</td>
+         <td><span class="mono">{{results.Info.analyse.started}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>Analysis UUID</strong>:</td>
+         <td><span class="mono">{{results.Info.analyse.uuid}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>Scoring</strong>:</td>
+         <td><span class="mono"><strong>{{results.score}}</strong></span></td>
+      </tr>
+      <tr>
+         <td><strong>File name</strong>:</td>
+         <td><span class="mono">{{results.Info.file.filename}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>File size</strong>:</td>
+         <td><span class="mono">{{results.Info.file.size}} bytes</span></td>
+      </tr>
+      {% if results.Info.file.type == 'PE32' or results.Info.file.type == 'PE32+' or results.Info.file.type == 'MS-DOS' %} 
+      <tr>
+         <td><strong>Architecture</strong>:</td>
+         <td><span class="mono">{{results.Info.file.Architecture}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>Required CPU type</strong>:</td>
+         <td><span class="mono">{{results.Info.file.CPU}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>Subsystem</strong>:</td>
+         <td><span class="mono">{{results.Info.file.Subsystem}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>EXE</strong>:</td>
+         <td><span class="mono">{{results.Info.file.EXE}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>DLL</strong>:</td>
+         <td><span class="mono">{{results.Info.file.DLL}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>Driver</strong>:</td>
+         <td><span class="mono">{{results.Info.file.DRIVER}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>is Probably Packed</strong>:</td>
+         <td><span class="mono">{{results.Info.file.isProbablyPacked}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>Digital Signature</strong>:</td>
+         <td><span class="mono">{{results.Info.file.digitalSignature}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>imphash</strong>:</td>
+         <td><span class="mono">{{results.Info.file.imphash}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>pehash</strong>:</td>
+         <td><span class="mono">{{results.Info.file.pehash}}</span></td>
+      </tr>
+      {% endif %}
+      <tr>
+         <td><strong>File type</strong>:</td>
+         <td><span class="mono">{{results.Info.file.type}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>MD5</strong>:</td>
+         <td><span class="mono">{{results.Info.file.md5}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>SHA1</strong>:</td>
+         <td><span class="mono">{{results.Info.file.sha1}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>SHA256</strong>:</td>
+         <td><span class="mono">{{results.Info.file.sha256}}</span></td>
+      </tr>
+      {% endif %}
+      {% if results.PEID %}
+      {% for PEID in results.PEID %}
+      <tr>
+         <td><strong>PEiD Signature</strong>:</td>
+         <td>{{PEID}}</td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+   </tbody>
+</table>
+</div>

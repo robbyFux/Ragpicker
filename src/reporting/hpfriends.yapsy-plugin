@@ -1,0 +1,8 @@
+[Core]
+Name = hpfriends
+Module = hpfriends
+   
+[Documentation]
+Description = Publishes the results on an HPFeeds channel
+Author = Robby Zeitfuchs
+Version = 1.0

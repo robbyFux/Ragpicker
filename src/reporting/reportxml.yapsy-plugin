@@ -1,0 +1,8 @@
+[Core]
+Name = reportxml
+Module = reportxml
+   
+[Documentation]
+Description = Store analysis results as xml document
+Author = Robby Zeitfuchs
+Version = 1.0

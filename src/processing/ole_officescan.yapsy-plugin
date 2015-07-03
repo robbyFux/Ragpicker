@@ -1,0 +1,8 @@
+[Core]
+Name = ole_officescan
+Module = ole_officescan
+   
+[Documentation]
+Description = OLE - Analyze the suspicious Office documents
+Author = Robby Zeitfuchs
+Version = 1.0

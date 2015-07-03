@@ -1,0 +1,8 @@
+[Core]
+Name = 02_unpacker_clamav
+Module = 02_unpacker_clamav
+   
+[Documentation]
+Description = Unpacking with ClamAv AntiVirus (http://www.clamav.net/lang/en/)
+Author = Robby Zeitfuchs
+Version = 1.0

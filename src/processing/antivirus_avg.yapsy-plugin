@@ -1,0 +1,8 @@
+[Core]
+Name = antivirus_avg
+Module = antivirus_avg
+   
+[Documentation]
+Description = Avg AntiVirus Scan (http://free.avg.com)
+Author = Robby Zeitfuchs
+Version = 1.0

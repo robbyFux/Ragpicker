@@ -1,0 +1,8 @@
+[Core]
+Name = spyeyetracker
+Module = spyeyetracker
+   
+[Documentation]
+Description = Fetching Malware-URLs from SpyEyetracker RSS (https://spyeyetracker.abuse.ch)
+Author = Robby Zeitfuchs
+Version = 1.0

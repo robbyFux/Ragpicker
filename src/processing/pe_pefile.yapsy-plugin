@@ -1,0 +1,8 @@
+[Core]
+Name = pe_peid
+Module = pe_peid
+   
+[Documentation]
+Description = PE - Detects most common packers, cryptors and compilers for PE files
+Author = Robby Zeitfuchs
+Version = 1.0

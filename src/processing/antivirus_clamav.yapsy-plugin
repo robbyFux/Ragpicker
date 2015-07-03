@@ -1,0 +1,8 @@
+[Core]
+Name = antivirus_clamav
+Module = antivirus_clamav
+   
+[Documentation]
+Description = ClamAv AntiVirus Scan (http://www.clamav.net/lang/en/)
+Author = Robby Zeitfuchs
+Version = 1.0

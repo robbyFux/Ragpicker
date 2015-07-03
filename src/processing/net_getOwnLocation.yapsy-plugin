@@ -1,0 +1,8 @@
+[Core]
+Name = net_getOwnLocation
+Module = net_getOwnLocation
+   
+[Documentation]
+Description = Returns the own internet location.
+Author = Robby Zeitfuchs
+Version = 1.0

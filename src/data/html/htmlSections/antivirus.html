@@ -1,0 +1,170 @@
+<div style="text-align: right;margin-top: 10px;"><a href="#top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEGSURBVDjLpZM/LwRRFMXPspmEaGc1shHRaiXsJ5GIRixbCr6SikxIlqgJM5UohIiGdofovHf/PZVmYwZvTntPfjnn3txWCAFNNFE33L/ZKXYv+1dRgL3r7bu0PbucJp3e4GLjtsrXGq9wkA8SU7tPk87i/MwCzAyP5QNeytcnJl46XMuoNoGKDoVlTkQhJpAgmJqcBjnqkqPTXxN8qz9cD6vdHtQMxXOBt49y5XjzLB/3tau6kWewKiwoRu8jZFvn+U++GgCBlWFBQY4qr1ANcAQxgQaFjwH4TwYrQ5skYBOYKbzjiASOwCrNd2BBwZ4jAcowGJgkAuAZ2dEJhAUqij//wn/1BesSumImTttSAAAAAElFTkSuQmCC" alt="^" title="Go to the top" border="0"></a></div>
+<tag id="antivirus">
+<div class="section">
+<div class="section-title">Antivirus</div>
+{% if results.VirusTotal %}
+<fieldset>
+   <legend>Virustotal</legend>
+   <div id="virustotal" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td class="title">Virustotal</td>
+            </tr>
+            <tr class="row">
+               <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <colgroup>
+                     <col width="150">
+                     <col width="*">
+                  </colgroup>
+                  <tbody>
+                     {% if results.VirusTotal.file.verbose_msg %}
+                     <tr>
+                        <td><strong>Message</strong>:</td>
+                        <td><span class="mono">{{results.VirusTotal.file.verbose_msg}}</span></td>
+                     </tr>
+                     {% else %}
+                     <tr>
+                        <td><strong>Scandate</strong>:</td>
+                        <td><span class="mono">{{results.VirusTotal.file.scan_date}}</span></td>
+                     </tr>
+                     <tr>
+                        <td><strong>Detection rate</strong>:</td>
+                        <td><span class="mono">{{results.VirusTotal.file.positives}}/{{results.VirusTotal.file.total}}</span></td>
+                     </tr>
+                     {% endif %}
+                  </tbody>
+               </table>
+            </tr>
+         </tbody>
+      </table>
+	{% if results.VirusTotal.file.scannerMalwareClassification %}
+		<br>
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		   <colgroup>
+		      <col width="150">
+		      <col width="*">
+		   </colgroup>
+		   <tbody>     
+              <tr>
+                 <td class="title" colspan="2">Scanner malware classification</td>
+              </tr>
+		      <tr>
+		         <td><strong>downloader</strong>:</td>
+		         <td><span class="mono">{{results.VirusTotal.file.scannerMalwareClassification.downloader}}</span></td>
+		      </tr>
+		      <tr>
+		         <td><strong>dropper</strong>:</td>
+		         <td><span class="mono">{{results.VirusTotal.file.scannerMalwareClassification.dropper}}</span></td>
+		      </tr>
+		      <tr>
+		         <td><strong>exploit</strong>:</td>
+		         <td><span class="mono">{{results.VirusTotal.file.scannerMalwareClassification.exploit}}</span></td>
+		      </tr>
+		      <tr>
+		         <td><strong>ransomware</strong>:</td>
+		         <td><span class="mono">{{results.VirusTotal.file.scannerMalwareClassification.ransomware}}</span></td>
+		      </tr>
+		      <tr>
+		         <td><strong>riskware</strong>:</td>
+		         <td><span class="mono">{{results.VirusTotal.file.scannerMalwareClassification.riskware}}</span></td>
+		      </tr>
+		      <tr>
+		         <td><strong>rootkit</strong>:</td>
+		         <td><span class="mono">{{results.VirusTotal.file.scannerMalwareClassification.rootkit}}</span></td>
+		      </tr>
+		      <tr>
+		         <td><strong>trojan</strong>:</td>
+		         <td><span class="mono">{{results.VirusTotal.file.scannerMalwareClassification.trojan}}</span></td>
+		      </tr>
+		      <tr>
+		         <td><strong>worm</strong>:</td>
+		         <td><span class="mono">{{results.VirusTotal.file.scannerMalwareClassification.worm}}</span></td>
+		      </tr>	      	      	      	      	      	      	      
+		   </tbody>
+		</table>
+	{% endif %} 
+	{% if results.VirusTotal.file.scannerMalwareFamily %} 
+	<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	   <colgroup>
+	      <col width="150">
+	      <col width="*">
+	   </colgroup>
+	   <tbody>
+          <tr>
+             <td class="title" colspan="2">Scanner malware family determination</td>
+          </tr>     
+	      <tr>
+	         <td><strong>Most frequent word</strong>:</td>
+	         <td><span class="mono">{{results.VirusTotal.file.scannerMalwareFamily.family}} (count={{results.VirusTotal.file.scannerMalwareFamily.count}})</span></td>
+	      </tr>
+	   </tbody>
+	</table>
+	{% endif %}
+   </div>
+</fieldset>
+{% if results.VirusTotal.file.filenames %}        
+<fieldset>
+   <legend><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFWSURBVBgZBcE/SFQBAAfg792dppJeEhjZn80MChpqdQ2iscmlscGi1nBPaGkviKKhONSpvSGHcCrBiDDjEhOC0I68sjvf+/V9RQCsLHRu7k0yvtN8MTMPICJieaLVS5IkafVeTkZEFLGy0JndO6vWNGVafPJVh2p8q/lqZl60DpIkaWcpa1nLYtpJkqR1EPVLz+pX4rj47FDbD2NKJ1U+6jTeTRdL/YuNrkLdhhuAZVP6ukqbh7V0TzmtadSEDZXKhhMG7ekZl24jGDLgtwEd6+jbdWAAEY0gKsPO+KPy01+jGgqlUjTK4ZroK/UVKoeOgJ5CpRyq5e2qjhF1laAS8c+Ymk1ZrVXXt2+9+fJBYUwDpZ4RR7Wtf9u9m2tF8Hwi9zJ3/tg5pW2FHVv7eZJHd75TBPD0QuYze7n4Zdv+ch7cfg8UAcDjq7mfwTycew1AEQAAAMB/0x+5JQ3zQMYAAAAASUVORK5CYII=" alt="" border="0">
+      Virustotal Filenames <a href="javascript:showHide('VTFileNames');"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC" alt="+" align="absmiddle" border="0">
+      </a>
+   </legend>
+   <div id="VTFileNames" class="section-nested" style="display: none; ">
+      {% for filename in results.VirusTotal.file.filenames %}
+      <div><span class="mono">{{filename}}</span></div>
+      {% endfor%}	
+      <div class="space"></div>
+   </div>
+</fieldset>
+{% endif %}  
+{% endif %}
+<div class="space-small"></div>
+<fieldset>
+   <legend>AV-Scan</legend>
+   <div id="dns" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td class="title">Antivirus</td>
+               <td class="title">Result</td>
+            </tr>
+            {% if results.AntivirusScanAvg %}
+            <tr class="row">
+               <td class="row"><span class="mono">AVG</span></td>
+               <td class="row"><span class="mono">{{results.AntivirusScanAvg.Avg}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.AntivirusScanAvira %}
+            <tr class="alternate">
+               <td class="row"><span class="mono">Avira</span></td>
+               {% if results.AntivirusScanAvira.Avira.url %}
+               <td class="row"><span class="mono"><a href="{{results.AntivirusScanAvira.Avira.url}}"  target="_blank">{{results.AntivirusScanAvira.Avira.scan}}</a></span></td>
+               {% else %}
+               <td class="row"><span class="mono">{{results.AntivirusScanAvira.Avira.scan}}</span></td>
+               {% endif %}
+            </tr>
+            {% endif %}
+            {% if results.AntivirusScanBitDefender %}
+            <tr class="row">
+               <td class="row"><span class="mono">BitDefender</span></td>
+               <td class="row"><span class="mono">{{results.AntivirusScanBitDefender.BitDefender}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.AntivirusScanClamAv %}
+            <tr class="alternate">
+               <td class="row"><span class="mono">ClamAv</span></td>
+               <td class="row"><span class="mono">{{results.AntivirusScanClamAv.ClamAv}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.AntivirusScanFProt %}
+            <tr class="row">
+               <td class="row"><span class="mono">F-Prot</span></td>
+               <td class="row"><span class="mono">{{results.AntivirusScanFProt.FProt}}</span></td>
+            </tr>
+            {% endif %}
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+<div class="space-small"></div>

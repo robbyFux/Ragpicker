@@ -1,0 +1,331 @@
+{% if results.VerifySigs %}   
+<fieldset>
+   <legend>File-Signature</legend>
+   <div id="verify_sigs" class="section-nested" style="display: block; ">
+      <table class="table table-striped table-bordered">
+         <colgroup>
+            <col width="150" />
+            <col width="*" />
+         </colgroup>
+         <tbody>
+            {% if results.VerifySigs.ValidationError %} 
+            <tr>
+               <td><strong>Validation Error</strong>:</td>
+               <td><span class="mono">{{results.VerifySigs.ValidationError}}</span></td>
+            </tr>
+            {% else %}    
+            <tr>
+               <td><strong>Program name</strong>:</td>
+               <td><span class="mono">{{results.VerifySigs.ProgramName}}</span></td>
+            </tr>
+            <tr>
+               <td><strong>Program URL</strong>:</td>
+               <td><span class="mono">{{results.VerifySigs.ProgramURL}}</span></td>
+            </tr>
+            <tr>
+               <td><strong>Issuer</strong>:</td>
+               <td><span class="mono">{{results.VerifySigs.Issuer}}</span></td>
+            </tr>
+            <tr>
+               <td><strong>Publisher CN</strong>:</td>
+               <td><span class="mono">{{results.VerifySigs.PublisherCN}}</span></td>
+            </tr>
+            <tr>
+               <td><strong>Publisher O</strong>:</td>
+               <td><span class="mono">{{results.VerifySigs.PublisherO}}</span></td>
+            </tr>
+            {% if results.VerifySigs.NotBefore %}
+            <tr>
+               <td><strong>Not before</strong>:</td>
+               <td><span class="mono">{{results.VerifySigs.NotBefore}}</span></td>
+            </tr>
+            <tr>
+               <td><strong>Not after</strong>:</td>
+               <td><span class="mono">{{results.VerifySigs.NotAfter}}</span></td>
+            </tr>
+            {% endif %}
+            {% if results.VerifySigs.SigningDate %}
+            <tr>
+               <td><strong>Signing Date</strong>:</td>
+               <td><span class="mono">{{results.VerifySigs.SigningDate}}</span></td>
+            </tr>
+            {% endif %} 
+            {% endif %}    
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+{% endif %}
+{% if results.PeFile %}
+{% if results.PeFile.PeVersionsInfo %}
+<fieldset>
+   <legend>Version Infos</legend>
+   <div id="PeVersionsInfo" class="section-nested" style="display: block; ">
+      <table class="table table-striped table-bordered">
+         <colgroup>
+            <col width="150" />
+            <col width="*" />
+         </colgroup>
+         {% for info in results.PeFile.PeVersionsInfo %}
+         <tr>
+            <td><strong>{{info.name}}</strong>:</td>
+            <td><span class="mono">{{info.value}}</span></td>
+         </tr>
+         {% endfor %}
+      </table>
+   </div>
+</fieldset>
+{% endif %}
+{% if results.PeFile.PeCheckAntiDBG %}
+<fieldset>
+   <legend>PE-Anti Debug</legend>
+   <div id="AntiDBG" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="150">
+            <col width="*">
+         </colgroup>
+         <tbody>
+            <tr>
+               <td><strong>Anti Debug</strong>:</td>
+               <td><span class="mono">{{results.PeFile.PeCheckAntiDBG.Anti_Debug}}</span></td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+{% endif %}
+{% if results.PeFile.PeCheckAntiVM %}
+<fieldset>
+   <legend>PE-AntiVM</legend>
+   <div id="AntiVM" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="150">
+            <col width="*">
+         </colgroup>
+         <tbody>
+            {% for AntiVM in results.PeFile.PeCheckAntiVM %}
+            <tr>
+               <td><strong>AntiVM</strong>:</td>
+               <td><span class="mono">{{AntiVM}}</span></td>
+            </tr>
+            {% endfor %}     
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+{% endif %}
+{% if results.PeFile.PeTimestamp %} 
+<fieldset>
+   <legend>PE-TimeDateStamp</legend>
+   <div id="CheckEP" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="150">
+            <col width="*">
+         </colgroup>
+         <tbody>
+            <tr>
+               <td><strong>TimeDateStamp</strong>:</td>
+               <td><span class="mono">{{results.PeFile.PeTimestamp}}</span></td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+{% endif %}
+{% if results.PeFile.PeEntryPoint %}     
+<fieldset>
+   <legend>Entry Point (EP)</legend>
+   <div id="CheckEP" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="150">
+            <col width="*">
+         </colgroup>
+         <tbody>
+            <tr>
+               <td><strong>EP-Address</strong>:</td>
+               <td><span class="mono">{{results.PeFile.PeEntryPoint.EP}}</span></td>
+            </tr>
+            <tr>
+               <td><strong>Name</strong>:</td>
+               <td><span class="mono">{{results.PeFile.PeEntryPoint.Name}}</span></td>
+            </tr>
+            <tr>
+               <td><strong>Pos/Sections</strong>:</td>
+               <td><span class="mono">{{results.PeFile.PeEntryPoint.posVsSections}}</span></td>
+            </tr>
+            <tr>
+               <td><strong>Suspicious</strong>:</td>
+               <td><span class="mono">{{results.PeFile.PeEntryPoint.Suspicious}}</span></td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+{% endif %}
+{% if results.PeFile.PeChecksum %}     
+<fieldset>
+   <legend>PE-File Checksum</legend>
+   <div id="CheckEP" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="150">
+            <col width="*">
+         </colgroup>
+         <tbody>
+            <tr>
+               <td><strong>CRC-Claimed</strong>:</td>
+               <td><span class="mono">{{results.PeFile.PeChecksum.Claimed}}</span></td>
+            </tr>
+            <tr>
+               <td><strong>CRC-Actual</strong>:</td>
+               <td><span class="mono">{{results.PeFile.PeChecksum.Actual}}</span></td>
+            </tr>
+            <tr>
+               <td><strong>Suspicious</strong>:</td>
+               <td><span class="mono">{{results.PeFile.PeChecksum.Suspicious}}</span></td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+{% endif %}
+{% if results.PeFile.PeTlsCallbacks  %}
+<fieldset>
+   <legend>Thread Local Storage (TLS)</legend>
+   <div id="CheckTLS" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <colgroup>
+            <col width="150">
+            <col width="*">
+         </colgroup>
+         <tbody>
+            {% for tls in results.PeFile.PeTlsCallbacks %}        
+            <tr>
+               <td><strong>TLS-Adress</strong>:</td>
+               <td><span class="mono">{{tls}}</span></td>
+            </tr>
+            {% endfor%}	       
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+{% endif %} 
+{% if results.PeFile.PeSections %}
+<fieldset>
+   <legend><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALLSURBVDjLpZPfT1JhGMfprnnd39B1986rtja3TEWGBJocEYbya+oBzgJRt8xwKjoCf1SgqKSiGUqlYiZzGpY6XebMXFOxocIFK8p1c76d8zpXq9lNF8/27H2f7+f5Pu8PAQDB/8RfC2/u1WVErHTmS1oniyko7Bfmk4iVlmCG1t6KWOhMvuZcwCpTHU0a9EioVTjiRCmGQYqmSZ7QlCNZacCyuSp6LuCjVMR+sVpx4uzAkboMMYmQBJ/za/zeB3EOGzbqLhNAndeWYXRVZxocWpl5UI9d4XWkfT4ktRU45kbgRWewY5UScaqIGykXHOAKAdz2GKMNIStsYyYwAQP2RDfwIxjCN7cLiQoVsZys0uNzkZSI+VH2Jfm/AJqeMtYxfRe+xS5YR2lC5wFpdwfSTidSLc04lBcR8SFVfAr43YHSW4zZzSk4phvBjFRi52YB6Zx2d+JreztSTXbES2REyAMOuO5bomzWZHNfNTf7MwTqHjmWPi1gaiOE4aV+dAfqMa+jsCvJIzfBu+DP4kAmwY4wG7MKOWrtflR2R6BpGIgKyntLsbA9h4m1UQRXA/BHPTAN62CzuBClpNwN5GFXnItoiQR3mDao2sJwTKzD4ltELjPECjReBTu2MoSRZT+GlnzwLnSBHtIg1/oET6M7qPe+grJlkoj44AHq9hnIm15AaAtCUOXQZ2nd6ri2T4WuOSf6X3vIWeTbxjCzFkNgfhueyXeo6XsNQ2cERfbnRFzaOg1RXfD08ZycnFwwtOkUSheVrvApUN5LEfrkyh4G5rbwmItH0xuQN08SMcU54gHEwZ8vUd+qvaR3aC+Ka0dZb/g9POFNPOQc3OfsF9tPO/MAcf04coyD7Lm/TGXtyJJZeuISrtAeeAtXaB2K1jCkjc+QYw5AbHyQoEzOa//8qvxo6pruskKmNy2uG+csj6HA2PtdbnZVn9X8BLLktmdBdpY6AAAAAElFTkSuQmCC" alt="" border="0">
+      {{results.PeFile.PeSections.NumberOfSections}} - Sections <a href="javascript:showHide('pe_sections');"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC" alt="+" align="absmiddle" border="0">
+      </a>
+   </legend>
+   <div id="pe_sections" class="section-nested" style="display: block; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td class="title">Name</td>
+               <td class="title">Virtual Address</td>
+               <td class="title">Virtual Size</td>
+               <td class="title">Size of Raw Data</td>
+               <td class="title">Entropy</td>
+            </tr>
+            {% for section in results.PeFile.PeSections.Sections %}
+            <tr class={{ loop.cycle('alternate', 'row') }}>
+            <td class="row">{{section.name}}</td>
+            <td class="row">{{section.virtualAddress}}</td>
+            <td class="row">{{section.virtualSize}}</td>
+            <td class="row">{{section.sizeOfRawData}}</td>
+            <td class="row">{{section.entropy}}</td>
+            </tr>
+            {% endfor%}	
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+{% endif %}
+<div class="space-small"></div>
+{% if results.PeFile.PeRSRC %}
+<fieldset>
+   <legend><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALLSURBVDjLpZPfT1JhGMfprnnd39B1986rtja3TEWGBJocEYbya+oBzgJRt8xwKjoCf1SgqKSiGUqlYiZzGpY6XebMXFOxocIFK8p1c76d8zpXq9lNF8/27H2f7+f5Pu8PAQDB/8RfC2/u1WVErHTmS1oniyko7Bfmk4iVlmCG1t6KWOhMvuZcwCpTHU0a9EioVTjiRCmGQYqmSZ7QlCNZacCyuSp6LuCjVMR+sVpx4uzAkboMMYmQBJ/za/zeB3EOGzbqLhNAndeWYXRVZxocWpl5UI9d4XWkfT4ktRU45kbgRWewY5UScaqIGykXHOAKAdz2GKMNIStsYyYwAQP2RDfwIxjCN7cLiQoVsZys0uNzkZSI+VH2Jfm/AJqeMtYxfRe+xS5YR2lC5wFpdwfSTidSLc04lBcR8SFVfAr43YHSW4zZzSk4phvBjFRi52YB6Zx2d+JreztSTXbES2REyAMOuO5bomzWZHNfNTf7MwTqHjmWPi1gaiOE4aV+dAfqMa+jsCvJIzfBu+DP4kAmwY4wG7MKOWrtflR2R6BpGIgKyntLsbA9h4m1UQRXA/BHPTAN62CzuBClpNwN5GFXnItoiQR3mDao2sJwTKzD4ltELjPECjReBTu2MoSRZT+GlnzwLnSBHtIg1/oET6M7qPe+grJlkoj44AHq9hnIm15AaAtCUOXQZ2nd6ri2T4WuOSf6X3vIWeTbxjCzFkNgfhueyXeo6XsNQ2cERfbnRFzaOg1RXfD08ZycnFwwtOkUSheVrvApUN5LEfrkyh4G5rbwmItH0xuQN08SMcU54gHEwZ8vUd+qvaR3aC+Ka0dZb/g9POFNPOQc3OfsF9tPO/MAcf04coyD7Lm/TGXtyJJZeuISrtAeeAtXaB2K1jCkjc+QYw5AbHyQoEzOa//8qvxo6pruskKmNy2uG+csj6HA2PtdbnZVn9X8BLLktmdBdpY6AAAAAElFTkSuQmCC" alt="" border="0">
+      .rsrc Section <a href="javascript:showHide('rsrc');"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC" alt="+" align="absmiddle" border="0">
+      </a>
+   </legend>
+   <div id="rsrc" class="section-nested" style="display: none; ">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td class="title">Name</td>
+               <td class="title">RVA</td>
+               <td class="title">Size</td>
+               <td class="title">Lang</td>
+               <td class="title">Sublang</td>
+               <td class="title">Type</td>
+            </tr>
+            {% for rsrc in results.PeFile.PeRSRC %}
+            <tr class={{ loop.cycle('alternate', 'row') }}>
+            <td class="row">{{rsrc.name}}</td>
+            <td class="row">{{rsrc.RVA}}</td>
+            <td class="row">{{rsrc.Size}}</td>
+            <td class="row">{{rsrc.Lang}}</td>
+            <td class="row">{{rsrc.Sublang}}</td>
+            <td class="row">{{rsrc.Type}}</td>
+            </tr>
+            {% endfor%}	
+         </tbody>
+      </table>
+   </div>
+</fieldset>
+{% endif %}
+<div class="space-small"></div>
+{% if results.PeFile.Imports %}
+<fieldset>
+   <legend><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFWSURBVBgZBcE/SFQBAAfg792dppJeEhjZn80MChpqdQ2iscmlscGi1nBPaGkviKKhONSpvSGHcCrBiDDjEhOC0I68sjvf+/V9RQCsLHRu7k0yvtN8MTMPICJieaLVS5IkafVeTkZEFLGy0JndO6vWNGVafPJVh2p8q/lqZl60DpIkaWcpa1nLYtpJkqR1EPVLz+pX4rj47FDbD2NKJ1U+6jTeTRdL/YuNrkLdhhuAZVP6ukqbh7V0TzmtadSEDZXKhhMG7ekZl24jGDLgtwEd6+jbdWAAEY0gKsPO+KPy01+jGgqlUjTK4ZroK/UVKoeOgJ5CpRyq5e2qjhF1laAS8c+Ymk1ZrVXXt2+9+fJBYUwDpZ4RR7Wtf9u9m2tF8Hwi9zJ3/tg5pW2FHVv7eZJHd75TBPD0QuYze7n4Zdv+ch7cfg8UAcDjq7mfwTycew1AEQAAAMB/0x+5JQ3zQMYAAAAASUVORK5CYII=" alt="" border="0">
+      Imports <a href="javascript:showHide('pe_imports');"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC" alt="+" align="absmiddle" border="0">
+      </a>
+   </legend>
+   <div id="pe_imports" class="section-nested" style="display: none; ">
+      {% for dll in results.PeFile.Imports %}
+      <div><strong>Library <span class="blue">{{dll.name}}</span></strong>:</div>
+      {% for import in dll.imports %}
+      <div><span class="mono">{{import}}</span></div>
+      {% endfor%}	
+      <div class="space"></div>
+      {% endfor%}	
+   </div>
+</fieldset>
+{% endif %}
+<div class="space-small"></div>
+{% if results.PeFile.PeSuspiciousApiFunctions %}
+<fieldset>
+   <legend><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFWSURBVBgZBcE/SFQBAAfg792dppJeEhjZn80MChpqdQ2iscmlscGi1nBPaGkviKKhONSpvSGHcCrBiDDjEhOC0I68sjvf+/V9RQCsLHRu7k0yvtN8MTMPICJieaLVS5IkafVeTkZEFLGy0JndO6vWNGVafPJVh2p8q/lqZl60DpIkaWcpa1nLYtpJkqR1EPVLz+pX4rj47FDbD2NKJ1U+6jTeTRdL/YuNrkLdhhuAZVP6ukqbh7V0TzmtadSEDZXKhhMG7ekZl24jGDLgtwEd6+jbdWAAEY0gKsPO+KPy01+jGgqlUjTK4ZroK/UVKoeOgJ5CpRyq5e2qjhF1laAS8c+Ymk1ZrVXXt2+9+fJBYUwDpZ4RR7Wtf9u9m2tF8Hwi9zJ3/tg5pW2FHVv7eZJHd75TBPD0QuYze7n4Zdv+ch7cfg8UAcDjq7mfwTycew1AEQAAAMB/0x+5JQ3zQMYAAAAASUVORK5CYII=" alt="" border="0">
+      Suspicious Api-Functions <a href="javascript:showHide('SuspiciousApiFunctions');"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC" alt="+" align="absmiddle" border="0">
+      </a>
+   </legend>
+   <div id="SuspiciousApiFunctions" class="section-nested" style="display: none; ">
+      {% for function in results.PeFile.PeSuspiciousApiFunctions %}
+      <div><span class="mono">{{function}}</span></div>
+      {% endfor%}	
+      <div class="space"></div>
+   </div>
+</fieldset>
+{% endif %}
+<div class="space-small"></div>
+{% if results.PeFile.PeCheckAntiDBG %}
+<fieldset>
+   <legend><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFWSURBVBgZBcE/SFQBAAfg792dppJeEhjZn80MChpqdQ2iscmlscGi1nBPaGkviKKhONSpvSGHcCrBiDDjEhOC0I68sjvf+/V9RQCsLHRu7k0yvtN8MTMPICJieaLVS5IkafVeTkZEFLGy0JndO6vWNGVafPJVh2p8q/lqZl60DpIkaWcpa1nLYtpJkqR1EPVLz+pX4rj47FDbD2NKJ1U+6jTeTRdL/YuNrkLdhhuAZVP6ukqbh7V0TzmtadSEDZXKhhMG7ekZl24jGDLgtwEd6+jbdWAAEY0gKsPO+KPy01+jGgqlUjTK4ZroK/UVKoeOgJ5CpRyq5e2qjhF1laAS8c+Ymk1ZrVXXt2+9+fJBYUwDpZ4RR7Wtf9u9m2tF8Hwi9zJ3/tg5pW2FHVv7eZJHd75TBPD0QuYze7n4Zdv+ch7cfg8UAcDjq7mfwTycew1AEQAAAMB/0x+5JQ3zQMYAAAAASUVORK5CYII=" alt="" border="0">
+      API Anti Debug <a href="javascript:showHide('PeAntiDBG');"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARBJREFUeNpi/P//PwMMdHV18QEpHgZM8K6srOwHiMEI0gBUKMbBwbH+9+/fJiwsLH/QVQPF2dnY2Hb8+PEjngUkAFR83NPTU0lRURHEZcNiA8PRo0e9Ll26tIaZi4tLEMhv9PHxYWFiYmLAhUVFRRlPnTolzAQyESjwDwgYkHFBQQEKH+ZXFiR3MmBxOwYbrAGk++fPnwxATzG0tbXBFZWXl4P8x1BVVcXw69cvVBtAAiC31tTUgPktLS1wNkgOhEEGE+2kP3/+wG348vfvXxZ0DUVFRSgaQE5mZGT8A464CRMmHAXGgbmKigozAw5w/fr1H0+ePNnGAnWj9/379xfeuXPHHpcGoP/WAW1MAwgwAHVnm1X1kmhJAAAAAElFTkSuQmCC" alt="+" align="absmiddle" border="0">
+      </a>
+   </legend>
+   <div id="PeAntiDBG" class="section-nested" style="display: none; ">
+      {% for function in results.PeFile.PeCheckAntiDBG.API_Anti_Debug %}
+      <div><span class="mono">{{function}}</span></div>
+      {% endfor%}	
+      <div class="space"></div>
+   </div>
+</fieldset>
+{% endif %}
+<div class="space-small"></div>
+    <div style="text-align: right;margin-top: 10px;"><a href="#top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEGSURBVDjLpZM/LwRRFMXPspmEaGc1shHRaiXsJ5GIRixbCr6SikxIlqgJM5UohIiGdofovHf/PZVmYwZvTntPfjnn3txWCAFNNFE33L/ZKXYv+1dRgL3r7bu0PbucJp3e4GLjtsrXGq9wkA8SU7tPk87i/MwCzAyP5QNeytcnJl46XMuoNoGKDoVlTkQhJpAgmJqcBjnqkqPTXxN8qz9cD6vdHtQMxXOBt49y5XjzLB/3tau6kWewKiwoRu8jZFvn+U++GgCBlWFBQY4qr1ANcAQxgQaFjwH4TwYrQ5skYBOYKbzjiASOwCrNd2BBwZ4jAcowGJgkAuAZ2dEJhAUqij//wn/1BesSumImTttSAAAAAElFTkSuQmCC" alt="^" title="Go to the top" border="0"></a></div>
+</div>
+{% endif %}

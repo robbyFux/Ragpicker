@@ -1,0 +1,9 @@
+[Core]
+Name = all_cuckooSandbox
+Module = all_cuckooSandbox
+   
+[Documentation]
+Description = Adds the Sample to the list of cuckoo-sandbox tasks to be processed and analyzed
+Author = Robby Zeitfuchs
+Version = 1.0
+Website = 

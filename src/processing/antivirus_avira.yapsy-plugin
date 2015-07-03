@@ -1,0 +1,8 @@
+[Core]
+Name = antivirus_avira
+Module = antivirus_avira
+   
+[Documentation]
+Description = Avira AntiVirus Scan (http://www.avira.com/de/avira-free-antivirus)
+Author = Robby Zeitfuchs
+Version = 1.0

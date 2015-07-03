@@ -1,0 +1,8 @@
+[Core]
+Name = antivirus_comodo
+Module = antivirus_comodo
+   
+[Documentation]
+Description = COMODO Antivirus Scan (http://www.comodo.com/)
+Author = Mark Lawrenz
+Version = 1.0

@@ -1,0 +1,8 @@
+[Core]
+Name = codeDB
+Module = codeDB
+   
+[Documentation]
+Description = codeDB report-plugin for Viviane's Code Database
+Author = Robby Zeitfuchs
+Version = 1.0

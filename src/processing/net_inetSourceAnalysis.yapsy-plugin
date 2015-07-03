@@ -1,0 +1,8 @@
+[Core]
+Name = net_inetSourceAnalysis
+Module = net_inetSourceAnalysis
+   
+[Documentation]
+Description = Check IP and Host for reputation. 
+Author = Robby Zeitfuchs
+Version = 1.0

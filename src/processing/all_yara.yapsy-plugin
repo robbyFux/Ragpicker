@@ -1,0 +1,8 @@
+[Core]
+Name = all_yara
+Module = all_yara
+   
+[Documentation]
+Description = Identify and classify malware with yara  (http://plusvic.github.io/yara/)
+Author = Robby Zeitfuchs
+Version = 1.0

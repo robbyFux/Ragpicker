@@ -1,0 +1,8 @@
+[Core]
+Name = 01_unpack_archive
+Module = 01_unpack_archive
+   
+[Documentation]
+Description = Recurse unpack archive
+Author = Robby Zeitfuchs
+Version = 1.0

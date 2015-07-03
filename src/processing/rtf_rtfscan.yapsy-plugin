@@ -1,0 +1,8 @@
+[Core]
+Name = rtf_rtfscan
+Module = rtf_rtfscan
+   
+[Documentation]
+Description = RTF - Analyze the suspicious RTF documents
+Author = Robby Zeitfuchs
+Version = 1.0

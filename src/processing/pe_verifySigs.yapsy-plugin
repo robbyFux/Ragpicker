@@ -1,0 +1,8 @@
+[Core]
+Name = pe_verifySigs
+Module = pe_verifySigs
+   
+[Documentation]
+Description = PE - Compute hashes, validate digital signature and list details
+Author = Robby Zeitfuchs
+Version = 1.0

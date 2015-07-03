@@ -1,0 +1,8 @@
+[Core]
+Name = malShare
+Module = malShare
+   
+[Documentation]
+Description = Fetching Malware-URLs from MalShare daily list (http://www.malshare.com)
+Author = Robby Zeitfuchs
+Version = 1.0

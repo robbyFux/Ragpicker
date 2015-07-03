@@ -1,0 +1,22 @@
+{% if results.OwnLocation %}  
+<div style="text-align: right;margin-top: 10px;"><a href="#top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEGSURBVDjLpZM/LwRRFMXPspmEaGc1shHRaiXsJ5GIRixbCr6SikxIlqgJM5UohIiGdofovHf/PZVmYwZvTntPfjnn3txWCAFNNFE33L/ZKXYv+1dRgL3r7bu0PbucJp3e4GLjtsrXGq9wkA8SU7tPk87i/MwCzAyP5QNeytcnJl46XMuoNoGKDoVlTkQhJpAgmJqcBjnqkqPTXxN8qz9cD6vdHtQMxXOBt49y5XjzLB/3tau6kWewKiwoRu8jZFvn+U++GgCBlWFBQY4qr1ANcAQxgQaFjwH4TwYrQ5skYBOYKbzjiASOwCrNd2BBwZ4jAcowGJgkAuAZ2dEJhAUqij//wn/1BesSumImTttSAAAAAElFTkSuQmCC" alt="^" title="Go to the top" border="0"></a></div>
+<tag id="own_location">
+<div class="section">
+<div class="section-title">Own Location</div>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+   <colgroup>
+      <col width="150">
+      <col width="*">
+   </colgroup>
+   <tbody>
+      <tr>
+         <td><strong>IP-Address</strong>:</td>
+         <td><span class="mono">{{results.OwnLocation.ipaddress}}</span></td>
+      </tr>
+      <tr>
+         <td><strong>Country</strong>:</td>
+         <td><span class="mono">{{results.OwnLocation.country}}</span></td>
+      </tr>
+   </tbody>
+</table>
+{% endif %}

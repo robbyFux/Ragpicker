@@ -1,0 +1,8 @@
+[Core]
+Name = antivirus_avast
+Module = antivirus_avast
+   
+[Documentation]
+Description = avast! Free Antivirus für Linux v1.3.0 (http://www.avast.com)
+Author = Mark Lawrenz
+Version = 1.0

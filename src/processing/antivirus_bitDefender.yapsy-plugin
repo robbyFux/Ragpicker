@@ -1,0 +1,8 @@
+[Core]
+Name = antivirus_bitDefender
+Module = antivirus_bitDefender
+   
+[Documentation]
+Description = BitDefender AntiVirus Scan (http://www.bitdefender.co.uk/)
+Author = Robby Zeitfuchs
+Version = 1.0

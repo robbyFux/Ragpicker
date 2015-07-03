@@ -1,0 +1,8 @@
+[Core]
+Name = pdf_pdfid
+Module = pdf_pdfid
+   
+[Documentation]
+Description = PDF - Analyze the suspicious PDF documents
+Author = Robby Zeitfuchs
+Version = 1.0
