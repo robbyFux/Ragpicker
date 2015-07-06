@@ -81,9 +81,9 @@ Sort malware files by file type e.g.
 └── Zip
 ```
 
-```
-Usage
+###Usage
 
+```
 ./manager.py sort -h
 usage: manager.py sort [-h] -s SOURCE_DIR -d DESTINATION_DIR
 
@@ -111,9 +111,9 @@ b3d7fb29b78909a139958a3864b66a000cc42f5a0ae0a9321503182560211f31
 
 ###Format 2:
 
-```
 sha256 file json-style (switch '--json true') e.g.
 
+```
 {
     "0" : "884bf70feb3ba9aeaad49700d2956b9d494be1e32fe8de779d4022f3db806d63",
     "1" : "992bdc76042aa942579803ca8929d6cd1c8c2d6c067ac01ab9af0c9bd8c19996",
