@@ -1,8 +1,8 @@
 #Ragpicker Manager (manager.py)
 
-```
-Usage
+###Usage
 
+```
 ./manager.py -h
 usage: manager.py [-h] {stop,export,vxcage,import,sort} ...
 
@@ -31,9 +31,9 @@ Stops a running ragpicker instance.
 
 Export Ragpicker data.
 
-```
-Usage
+###Usage
 
+```
 manager.py export -h
 usage: manager.py export [-h] -d DIRNAME -f SHA256_FILE [--json JSON]
 
