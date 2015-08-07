@@ -141,16 +141,6 @@ class Statistics():
         
         sys.stdout.flush()  
         
-    def __runStatisticsCodedb(self):
-        print "***********************************"
-        print "*** Statistics MongoDB (CodeDB) ***"
-        print "***********************************"
-        print ""
-        print "Number of malware samples in database:", self.__database.countReportsCodeDB()
-        
-        print ""
-        sys.stdout.flush()
-        
         
     def __runStatisticsFiletypes(self):   
         #Liste und Haeufigkeit der Filetypes

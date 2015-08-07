@@ -4,6 +4,7 @@
 import base64
 import json
 import logging
+import urllib2
 
 from core.abstracts import Report
 from core.commonutils import convertDirtyDict2ASCII
@@ -27,15 +28,16 @@ CODE_DB_URL_STATUS = "https://%s:%s/sample/status/json/%s"
 TIME_OUT = 240
 VERTRAULICH_FREIGEGEBEN = "0"
 
-STATUS_ERROR = -1
-STATUS_NOT_EXISTS = 0
-STATUS_PENDING = 1
-STATUS_BEING_PROCESSED = 2
-STATUS_FINISHED = 3
-STATUS_KLONE = 4
-STATUS_FAMILY = 5
-STATUS_STATE_FINISHED = "finished"
-HEADERS = ""
+# Status eines Samples
+ERROR = "-1"
+NOT_EXISTS = "0"
+PENDING = "1"
+BEING_PROCESSED = "2"
+FINISHED = "3"
+KLONE = "4"
+FAMILY = "5"
+PROCESSING_STATE_FINISHED = "finished"
+ERROR_BAD_SHA256 = "Error: bad or missing sha256"
 
 class CodeDB(IPlugin, Report):
     
@@ -187,16 +189,77 @@ class CodeDB(IPlugin, Report):
     
     def _getTags(self, results, objfile, unpacked, extracted):
         tags = {}
+        resultsFile = results.get("Info").get("file")
         
         tags["Collector"] = "Ragpicker"
+        
+        # Antivirus is no longer used
+        #for k, v in results.items():
+        #    if "Antivirus" in k:
+        #        tags.update(flatten_dict(v))
+        
         # Analyse-UUID
         tags["Ragpicker-uuid"] = results.get("Info").get("analyse").get("uuid")
+        
+        # Special hashes
+        if resultsFile.get("pehash"):
+            tags["PEHash"] = resultsFile.get("pehash")
+        if resultsFile.get("imphash"):
+            tags["ImpHash"] = resultsFile.get("imphash")
         
         if extracted:
             tags["OrigFileType"] = objfile.file.get_type()
             tags["ExtractedFrom"] = objfile.file.get_fileSha256()
         if unpacked:
             tags["OrigFileType"] = objfile.file.get_type()
+            
+        # PE-File CPU, Subsystem, Architecture
+        if resultsFile.get("Subsystem"):
+            tags["Subsystem"] = resultsFile.get("Subsystem")        
+        if resultsFile.get("Architecture"):
+            tags["Architecture"] = resultsFile.get("Architecture") 
+        if resultsFile.get("CPU"):
+            tags["CPU"] = resultsFile.get("CPU") 
+                                    
+        if not unpacked or not extracted:
+            # Digital Signature
+            try:
+                if resultsFile.has_key("digitalSignature"):
+                    tags["DigitalSignature"] = results.get("Info").get("file").get("digitalSignature")
+            except KeyError:
+                # Key is not present
+                pass
+            
+            try:
+                if results.has_key("VerifySigs"):
+                    if "ValidationError" in results.get("VerifySigs"):
+                        tags["ValidationError"] = results.get("VerifySigs").get("ValidationError")
+                    else:
+                        tags.update(flatten_dict(results.get("VerifySigs")))
+            except KeyError:
+                # Key is not present
+                pass
+            
+            if results.has_key("PEID"):
+                tags["PEID"] = results.get("PEID")[0]
+                
+            if results.has_key("Teamcymru"): 
+                tags["Teamcymru"] = "malwarepercent=%s" % results.get("Teamcymru").get("malwarepercent")
+                
+            # VirusTotal
+            try:
+                if results.has_key("VirusTotal") and results.get("VirusTotal").has_key("file"):
+                    vtFile = results.get("VirusTotal").get("file")
+                    s = "%s/%s" % (vtFile.get("positives"), vtFile.get("total"))
+                    tags["VirusTotal"] = s
+                    
+                    if vtFile.has_key("scannerMalwareFamily"):
+                        family = vtFile.get("scannerMalwareFamily")
+                        tags["AvScannerMalwareFamily"] = "%s (count=%s)" % (family.get("family"), family.get("count"))
+                        
+            except KeyError:
+                # Key is not present
+                pass
             
         #clean tags
         for k in tags: 
@@ -206,23 +269,28 @@ class CodeDB(IPlugin, Report):
         
         return tags    
 
-    def getFileStatus(self, sha256):
-        # Status eines Samples in der CodeDB ( json(processingState=string,value=string (-1..3)) )
-        #Werte: -1:error, 0:not exists, 1:pending; 2:being processed, 3:finished,(4:inaktiv), 5: Familie
-        #PROCESSING_STATE_FINISHED = "finished"
-        try:
-            res = requests.get(CODE_DB_URL_STATUS + sha256, headers=HEADERS, verify=False)
-            res.raise_for_status()
-            data = json.loads(res.text)
-        except Exception as e:
-            raise Exception("Probleme bei der Durchfuehrung des Requests (http code=%s)" % e)
-    
-        if data.get("value") == STATUS_ERROR :
-            log.error("CodeDB return State: %s - Value: %s" % (data.get("Status"), data.get("value")))
-            raise Exception("CodeDB return State: %s - Value: %s" % (data.get("Status"), data.get("value")))
+    def _getFileStatus(self, sha256):
+        log.debug(CODE_DB_URL_STATUS % (self.cfg_host, self.cfg_port, sha256))
         
-        log.info("FileStatus: " + str(data))
-        return data         
+        try:
+            request = urllib2.Request(CODE_DB_URL_STATUS % (self.cfg_host, self.cfg_port, sha256), headers=self.headers)
+            result = urllib2.urlopen(request, timeout=60)
+            response_data = result.read()   
+        except urllib2.HTTPError as e:
+            log.error("getFileStatus: " + CODE_DB_URL_STATUS % (self.cfg_host, self.cfg_port, sha256))
+            raise Exception("Unable to perform HTTP request to CodeDB (http code=%s)" % e)
+        except urllib2.URLError as e:    
+            raise Exception("Unable to establish connection to CodeDB: %s" % e)  
+        
+        check = self.json2dic(response_data)
+        
+        log.info("_getFileStatus: " + str(check))
+        
+        if check.get("value") == ERROR :
+            log.error("CodeDB return State: %s - Value: %s" % (check.get("Status"), check.get("value")))
+            raise Exception("CodeDB return State: %s - Value: %s" % (check.get("Status"), check.get("value")))
+    
+        return check       
     
     def _isFileUploadable(self, results):
         fileInfo = results.get("Info").get("file")

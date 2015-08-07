@@ -261,20 +261,6 @@ def iterateSha256File(fileName, isJson):
     
     file.close()
 
-def submitTag(sha256, tags, config):
-    headers = {"Authorization" : "Basic %s" % base64.encodestring("%s:%s" % (config.get("user"), 
-                                                                             config.get("password"))).replace('\n', '')}
-    data = dict(sha256=sha256, tags=tags)
-    h = httplib2.Http(".cache", disable_ssl_certificate_validation=True)    
-    response, content = h.request(CODE_DB_URL_TAG % (config.get("host"), 
-                                                     config.get("port")), "POST", body=urlencode(data), headers=headers)      
-    
-    if not "'status': '200'" in str(response) :
-        log.error("%s --> %s = %s" % (sha256, tags, str(content))) 
-        
-    data = json.loads(content)
-    log.info("%s --> %s = %s" % (sha256, tags, data.get("Status")))
-
 if __name__ == '__main__':    
     # Datenbank
     database = Database()
@@ -305,12 +291,6 @@ if __name__ == '__main__':
     parser_sort.add_argument('-s','--source_dir', required=True, help='Source-Directory')
     parser_sort.add_argument('-d','--destination_dir', required=True, help='Destination-Directory')
     
-    parser_codeDBTag = subparsers.add_parser('codeDBTag', help='Export Ragpicker-Data')
-    parser_codeDBTag.set_defaults(which='codeDBTag')
-    parser_codeDBTag.add_argument('-t','--tag', required=True, help='CodeDB-Tag Format: \"key1 : value1 ; key2 : value2 ;\" Beispiel \"Quelle: hausintern; Zeus: Version x.y ;\"')
-    parser_codeDBTag.add_argument('-f','--sha256_file', required=True, help='SHA256-File')
-    parser_codeDBTag.add_argument('--json', default=False, help='File in json-format? Default=False')
-
     args = vars(parser.parse_args())
     
     # config logger
@@ -344,19 +324,6 @@ if __name__ == '__main__':
                 rapickerExport(sha256, dumpDir, database, vxCage)      
             except (Exception) as e:
                 log.error("Export-Error: %s" % e)
-    elif args['which'] == 'codeDBTag':
-        log.info("codeDBTag {} {}".format(args['tag'], args['sha256_file']))
-        config = cfgReporting.get("codeDB")
-
-        if not config.get("enabled"):
-            log.error("Sorry: CodeDB for Ragpicker is not enabled!")
-            sys.exit()  
-        
-        for sha256 in iterateSha256File(args['sha256_file'], args['json']):
-            try:
-                submitTag(sha256, args['tag'], config)      
-            except (Exception) as e:
-                log.error("CodeDBTag-Error: %s" % e)
     elif args['which'] == 'import':
         log.info("Importing {}".format(args['dirname']))
         impDir = os.path.normpath(args['dirname']) + os.sep

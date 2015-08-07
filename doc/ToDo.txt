@@ -2,11 +2,17 @@ Crawler
 Geodo Tracker: 
 http://gtrack.h3x.eu/corpus/120
 http://gtrack.h3x.eu/corpus/122
+
+http://malwareurls.joxeankoret.com/grayarea.txt
+http://malwareurls.joxeankoret.com/normal.txt
+
+_________________________________________________________________________________________________________________
+
+
+rtf-shellcode-carv.py
         
-        
-_________________________________________________________________________________________________________________        
-        
-        
+_________________________________________________________________________________________________________________
+
         
 # If not enough free disk space is available, then we print an
 # error message and wait another round (this check is ignored

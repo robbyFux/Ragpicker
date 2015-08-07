@@ -8,7 +8,7 @@ from core.config import Config
 from core.constants import RAGPICKER_ROOT
 
 try:
-    from pymongo.connection import Connection
+    from pymongo import MongoClient
     from pymongo.errors import ConnectionFailure, InvalidStringData, InvalidDocument
 except ImportError:
     raise Exception("PyMongo is required for working with MongoDB: http://api.mongodb.org/python/current/")   
@@ -38,7 +38,7 @@ class Database():
             try:
                 mongodbHost = self.__cfgReporting.getOption("mongodb", "host")
                 mongodbPort = self.__cfgReporting.getOption("mongodb", "port")
-                self.__mongodbConnection = Connection(mongodbHost, mongodbPort)
+                self.__mongodbConnection = MongoClient(mongodbHost, mongodbPort)
                 self.__mongodbCollectionRagpicker = self.__mongodbConnection.MalwareAnalyse.ragpicker
                 self.__mongodbCollectionFamilies = self.__mongodbConnection.MalwareAnalyse.families
                 self.__mongodbCollectionSandboxTaskQueue = self.__mongodbConnection.MalwareAnalyse.sandboxTaskQueue
@@ -52,7 +52,7 @@ class Database():
             try:
                 codedbHost = self.__cfgReporting.getOption("codeDB", "mongo_db_host")
                 codedbPort = self.__cfgReporting.getOption("codeDB", "mongo_db_port")
-                self.__codedbConnection = Connection(codedbHost, codedbPort)
+                self.__codedbConnection = MongoClient(codedbHost, codedbPort)
                 self.__codedbCollectionCodedb = self.__codedbConnection.MalwareAnalyse.codeDB
             except TypeError:
                 raise Exception("MongoDB connection port for CodeDB in report.config must be integer")
@@ -243,34 +243,4 @@ class Database():
         count = self.__mongodbCollectionFamilies.find().count()
         # Alle Ragpicker-Daten aus der MongoDB loeschen
         self.__mongodbCollectionFamilies.remove()
-        return count
-        
-# ------------------------------------------------------------------------------
-# CodeDB Database (MongoDB)
-# ------------------------------------------------------------------------------
-
-    def isCodeDBEnabled(self):
-        return self.__codedbEnabled
-
-    def countReportsCodeDB(self):
-        return self.__codedbCollectionCodedb.find().count()
-
-    # Attention deletes the whole CodeDB-Database!!!
-    # returns number of deleted reports 
-    def deleteCodeDB(self):
-        count = self.__codedbCollectionCodedb.find().count()
-        # Alle CodeDB-Reports aus der MongoDB loeschen
-        self.__codedbCollectionCodedb.remove()
-        return count
-    
-    #Count CodeDB-Reports by file sha256
-    def countCodeDB(self, file_sha256):
-        return self.__codedbCollectionCodedb.find({ "sha256" : file_sha256}).count()
-    
-    #Insert CodeDB-Report in MongoDB
-    def insertCodeDB(self, report):
-        # Store the report
-        try:
-            self.__codedbCollectionCodedb.insert(report)
-        except InvalidStringData:
-            self.__codedbCollectionCodedb.insert(convertDirtyDict2ASCII(report))         
+        return count        

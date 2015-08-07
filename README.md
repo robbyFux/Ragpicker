@@ -93,7 +93,6 @@ sudo apt-get install clamav clamav-freshclam
 sudo apt-get install unrar
 sudo apt-get install python-m2crypto
 sudo apt-get install python-pyasn1
-sudo apt-get install libimage-exiftool-perl perl-doc
 ```
  
 ###Install with pip [how install pip]:
@@ -105,7 +104,6 @@ sudo pip install httplib2
 sudo pip install yapsy
 sudo pip install beautifulsoup
 sudo pip install Jinja2
-sudo pip install yara
 sudo pip install pymongo
 sudo pip install hachoir-core
 sudo pip install hachoir-parser
